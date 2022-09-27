@@ -1,0 +1,24 @@
+
+body{
+    background-color: red;
+    width: 100%;
+    height: 100%;
+}
+
+.gradient{
+    background: linear-gradient(to right, rgb(255, 15, 123), rgb(248, 155, 41));
+}
+
+.logo_home{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    margin-top:35%;
+}
+
+.form-control{
+
+    border-radius: 100px 0px 0px 100px;
+
+}
