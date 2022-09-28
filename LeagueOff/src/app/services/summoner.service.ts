@@ -18,6 +18,6 @@ export class SummonerService {
 	constructor(private http: HttpClient) {}
 
 	getSummoner(summonerName: string): Observable<Summoner> {
-		return this.http.get<Summoner>(this.url+ `/api/summoner/${summonerName}`, this.httpOption);
+		return this.http.get<Summoner>(this.url + `/api/summoner/${summonerName}`, this.httpOption);
 	}
 }

@@ -23,3 +23,8 @@ html, body, drop-down-server, search-input {
 	height: 100%;
 }
 
+.text-error {
+	color: red;
+	font-weight: bolder;
+	text-transform: uppercase;
+}
