@@ -9,7 +9,7 @@ const routes: Routes = [
   // Route de base (arrivée sur le site)
   { path: '', component: AppComponent},
   // Route vers un component particulier
-  { path: 'vue-content', component: VueContentComponent},
+  { path: 'vue-content', component: VueContentComponent}
 ];
 
 @NgModule({
