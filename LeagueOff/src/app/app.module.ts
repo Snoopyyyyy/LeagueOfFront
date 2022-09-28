@@ -7,6 +7,7 @@ import { SearchInputComponent } from './search-input/search-input.component';
 import { DropDownServerComponent } from './drop-down-server/drop-down-server.component';
 import { VueContentComponent } from './vue-content/vue-content.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { MatchsListeComponent } from './matchs-liste/matchs-liste.component';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { HomePageComponent } from './home-page/home-page.component';
     DropDownServerComponent,
     VueContentComponent,
     HomePageComponent,
+    MatchsListeComponent,
   ],
   imports: [
     BrowserModule,
