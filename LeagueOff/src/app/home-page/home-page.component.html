@@ -1,0 +1,20 @@
+<div class="fullscreen bg-t d-flex flex-column justify-content-center align-items-center">
+	<form (ngSubmit)="submit()">
+		<div id="logo_home">
+			<img src="assets/img/logo.png" alt="logo" class="logo_home">
+		</div>
+
+		<select class="form-select w-90 m-auto mb-4" [(ngModel)]="region" name="region">
+			<option disabled selected value="">Serveur</option>
+			<option value="EU">EU</option>
+		</select>
+
+		<div class="input-group mobile_search mb-3">
+			<input type="text" class="form-control" placeholder="Summoner" [(ngModel)]="summonerName" name="summonerName"/>
+			<div class="input-group-append">
+				<button class="btn btn-ok" type="submit">GO</button>
+			</div>
+		</div>
+	</form>
+	<span class="text-error">{{error}}</span>
+</div>
