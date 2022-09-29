@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 
 export class GameService {
 	// TODO Mettre la bonne Url
-	url: string = "https://127.0.0.1/api/";
+	url: string = "https://127.0.0.1:8000/api/";
 	httpOption = {
 		headers: new HttpHeaders({
 			'Content-type': 'application/json',
@@ -19,10 +19,10 @@ export class GameService {
 	constructor(private http: HttpClient) {}
 
 	getHistory(region: string, puuid: string): Observable<Game[]> {
-		return this.http.get<Game[]>(this.url+ `/api/game/${region}/${puuid}`, this.httpOption);
+		return this.http.get<Game[]>(this.url+ `/game/${puuid}/history`, this.httpOption);
 	}
 
 	getGame(game_id: string): Observable<Game> {
-		return this.http.get<Game>(this.url+ `/api/game/${game_id}`, this.httpOption);
+		return this.http.get<Game>(this.url+ `/game/${game_id}`, this.httpOption);
 	}
 }

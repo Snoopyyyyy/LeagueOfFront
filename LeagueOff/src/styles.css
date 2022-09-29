@@ -26,3 +26,9 @@ html, body, drop-down-server, search-input {
 hr{
 	border-top: 2px solid  #F89B29;
 }
+
+.text-error {
+	color: red;
+	font-weight: bolder;
+	text-transform: uppercase;
+}
