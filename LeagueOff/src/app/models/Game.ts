@@ -1,14 +1,14 @@
 import {EventBase} from "./Event/EventBase";
 import {Player} from "./Player";
-import {Summoner} from "./Summoner";
 
 export class Game {
-	game_id!: string;
+	matchId!: number;
+	surrender!: boolean;
 	date!: Date;
 	duration!: number;
-	win!: boolean;
+	currentPlayer!: Player;
 
-	summoner!: Summoner;
+
 	players: Player[];
 	events: EventBase[];
 

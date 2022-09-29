@@ -8,7 +8,7 @@ import {Summoner} from "../models/Summoner";
 })
 export class SummonerService {
 	// TODO Mettre la bonne Url
-	url: string = "https://127.0.0.1:8000/api/";
+	url: string = "http://127.0.0.1:8000/api";
 	httpOption = {
 		headers: new HttpHeaders({
 			'Content-type': 'application/json',
@@ -18,6 +18,6 @@ export class SummonerService {
 	constructor(private http: HttpClient) {}
 
 	getSummoner(summonerName: string): Observable<Summoner> {
-		return this.http.get<Summoner>(this.url + `/summoner/${summonerName}`, this.httpOption);
+		return this.http.get<Summoner>(encodeURI(this.url + `/summoner/${summonerName}`), this.httpOption);
 	}
 }

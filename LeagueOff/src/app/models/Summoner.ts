@@ -1,4 +1,6 @@
 export class Summoner {
-	summoner_name!: string;
+	profileIconId!: number;
+	name!: string;
 	puuid!: string;
+	summonerLevel!: number;
 }
