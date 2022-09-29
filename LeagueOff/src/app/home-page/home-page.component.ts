@@ -29,7 +29,7 @@ export class HomePageComponent implements OnInit {
 		if(this.region != "" && this.summonerName != "") {
 			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
 				if(summoner.puuid != "") {
-					this.router.navigate([`/game/${this.region}/${summoner.puuid}`]);
+					this.router.navigate([`/game/${summoner.puuid}`]);
 				}else {
 					this.error = "No summoner found"
 				}
