@@ -11,6 +11,7 @@ export class Player {
 	participantId?: number;
 	visionScore?: number;
 	win?: boolean;
+	item0?: number;
 	item1?: number;
 	item2?: number;
 	item3?: number;

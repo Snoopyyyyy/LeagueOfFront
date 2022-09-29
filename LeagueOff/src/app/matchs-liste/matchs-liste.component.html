@@ -1,14 +1,51 @@
-<!-- <search-input></search-input> -->
-
 <div class="container principalcontainer">
 	<a *ngFor="let game of games" class="navbar-brand">
+
+		<div class="parent">
+			<div class="div1"> </div>
+			<div class="div2"><img src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}" alt="champ logo" class="champ-icon"></div>
+			<div class="div3"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item0!)}}" alt="objects" class="itemicon"> </div>
+			<div class="div4"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item1!)}}" alt="objects" class="itemicon"></div>
+			<div class="div5"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item2!)}}" alt="objects" class="itemicon"> </div>
+			<div class="div6"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item3!)}}" alt="objects" class="itemicon"> </div>
+			<div class="div7"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item4!)}}" alt="objects" class="itemicon"> </div>
+			<div class="div8"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item5!)}}" alt="objects" class="itemicon"> </div>
+			<div class="div9"><img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner1!)}}"  class="iconsum"></div>
+			<div class="div10"><img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner2!)}}" class="iconsum"></div>
+			<div class="div11"><img src="{{Fixdata.getRuneIcon(game.currentPlayer.FirstRune!)}}" alt="Rune1"></div>
+			<div class="div12"><img src="{{Fixdata.getRuneIcon(game.currentPlayer.SecondRune!)}}" alt="Rune2"></div>
+			<div class="div13">{{game.currentPlayer.kills!}} / {{game.currentPlayer.deaths!}} / {{game.currentPlayer.assists!}}</div>
+			<div class="div14">CS {{game.currentPlayer.cs!}}</div>
+			<div class="div15"> </div>
+			</div>  
+
+		<hr>
+	</a>
+</div>
+
+
+<!-- <div class="container principalcontainer">
+	<a *ngFor="let game of games" class="navbar-brand">
 		<div class="row">
+
 			<div class="col" id="champ-icon-col">
-				<img src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}" alt="champ logo" class="champ-icon">
+				
+				<div class="container" id="itemlist">
+					<div class="row">
+						<div class="col"><img src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}" alt="champ logo" class="champ-icon"></div>
+						<div class="w-100"></div>
+						<div class="col"><img src="{{Fixdata.getRuneIcon(game.currentPlayer.FirstRune!)}}" alt="objects" class="itemicon"></div>
+						<div class="col"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item2!)}}" alt="objects" class="itemicon"></div>
+						<div class="col"><img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.cs!)}}" alt="objects" class="itemicon"></div>
+						<div class="col"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item4!)}}" alt="objects" class="itemicon"></div>
+						<div class="col"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item5!)}}" alt="objects" class="itemicon"></div>
+						<div class="col"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item6!)}}" alt="objects" class="itemicon"></div>
+					</div>
+				</div>
 			</div>
+
 			<div class="col-3">
 				<h3>{{game.currentPlayer.championName!}}</h3>
-
 				<div class="container">
 					<div class="row">
 						<div class="col">1</div>
@@ -28,19 +65,9 @@
 
 
 			<div class="col-3">
-				<div class="container" id="itemlist">
-					<div class="row">
-						<div class="col">1</div>
-						<div class="col">2</div>
-						<div class="col">3</div>
-						<div class="w-100"></div>
-						<div class="col">4</div>
-						<div class="col">5</div>
-						<div class="col">6</div>
-					</div>
-				</div>
 			</div>
+
 		</div>
 		<hr>
 	</a>
-</div>
+</div> -->
