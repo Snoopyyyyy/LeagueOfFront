@@ -7,6 +7,7 @@ import {HttpClient} from "@angular/common/http";
 export class FixdataService {
 	url = "";
 	summonerSpellName: any = {};
+	runeIconsName: any = {};
 	version = "12.18.1";
 
 	constructor(private http: HttpClient) {
@@ -14,6 +15,12 @@ export class FixdataService {
 			for(let name in data.data) {
 				let sum = data.data[name];
 				this.summonerSpellName[sum.key] = sum.image.full;
+			}
+		})
+
+		http.get<any[]>("https://ddragon.leagueoflegends.com/cdn/"+this.version+"/data/fr_FR/runesReforged.json").subscribe(data => {
+			for(let rune of data) {
+				this.runeIconsName[rune.id+""] = rune.icon;
 			}
 		})
 	}
@@ -26,8 +33,8 @@ export class FixdataService {
 		return "https://ddragon.leagueoflegends.com/cdn/12.18.1/img/item/"+itemId+".png";
 	}
 
-	getRuneIcon(runeIcon: string): string {
-		return "https://ddragon.canisback.com/img/perk-images/Styles/"+runeIcon+".png";
+	getRuneIcon(runeId: number): string {
+		return "https://ddragon.canisback.com/img/"+this.runeIconsName[runeId];
 	}
 
 	getSummonerSpellIcon(summonerId: number): string {

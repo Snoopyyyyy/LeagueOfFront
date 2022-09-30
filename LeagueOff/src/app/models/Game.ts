@@ -1,4 +1,3 @@
-import {EventBase} from "./Event/EventBase";
 import {Player} from "./Player";
 
 export class Game {
@@ -6,11 +5,13 @@ export class Game {
 	surrender!: boolean;
 	date!: Date;
 	duration!: number;
+
 	currentPlayer!: Player;
+	soul?: string;
 
 
 	players: Player[];
-	events: EventBase[];
+	events: any[];
 
 	constructor() {
 		this.players = [];

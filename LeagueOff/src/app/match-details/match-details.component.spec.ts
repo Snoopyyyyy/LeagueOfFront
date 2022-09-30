@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { VueContentComponent } from './vue-content.component';
+import { MatchDetailsComponent } from './match-details.component';
 
-describe('VueContentComponent', () => {
-  let component: VueContentComponent;
-  let fixture: ComponentFixture<VueContentComponent>;
+describe('MatchDetailsComponent', () => {
+  let component: MatchDetailsComponent;
+  let fixture: ComponentFixture<MatchDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ VueContentComponent ]
+      declarations: [ MatchDetailsComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(VueContentComponent);
+    fixture = TestBed.createComponent(MatchDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

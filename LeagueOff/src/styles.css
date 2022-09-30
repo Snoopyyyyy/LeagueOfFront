@@ -6,11 +6,11 @@
 	background: linear-gradient(to bottom, rgb(255, 15, 123), rgb(248, 155, 41));
 }
 
-html, body {
+html, body, app-root, app-match-details {
 	height: 100%;
 }
 
-html, body, drop-down-server, search-input {
+html, body, app-root, drop-down-server, search-input, app-match-details {
 	width: 100%;
 }
 
@@ -31,4 +31,11 @@ hr{
 	color: red;
 	font-weight: bolder;
 	text-transform: uppercase;
+}
+
+app-match-details {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

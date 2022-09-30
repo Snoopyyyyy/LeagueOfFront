@@ -1,0 +1,45 @@
+<div class="container">
+	<div class="map-container bg-t">
+		<div id="map" >
+			<img src="{{map}}" style="position: absolute; width: 100%;"/>
+			<img src="{{soulMap}}" style="position: absolute; width: 100%;"
+				 [ngStyle]="{'opacity': getOpacity()}"/>
+
+			<app-map-icon
+					*ngFor="let event of kills"
+					class="ping death"
+					[event]="event"
+					[range]="range"
+					[ngStyle]="{
+					'bottom': (100*event.position.y)/15000+'%',
+					'left': (100*event.position.x)/15000+'%',
+					'background': event.killerId > 5 ? '#FF4444' : '#008FFF',
+					'opacity': event.timestamp < range ? ( event.timestamp  + 60000 > range ? '100%' : '25%') : '0%'
+				}"></app-map-icon>
+
+			<app-map-icon
+					*ngFor="let event of objective"
+					class="ping obj"
+					[event]="event"
+					[range]="range"
+					[ngStyle]="{
+					'bottom': (100*event.position.y)/15000+'%',
+					'left': (100*event.position.x)/15000+'%',
+					'background-image': 'url('+getObjectiveIcon(event.monsterSubType ?? event.monsterType)+')',
+					'visibility': event.spawn < range && range < event.timestamp ? 'visible' : 'hidden'}">
+			</app-map-icon>
+		</div>
+		<div class="setting">
+			<div class="timeline w-100 d-flex" style="padding-bottom: 10px;">
+				<button (click)="nextSpeed()" class="w-25">x{{speed}}</button>
+				<span class="w-50" style="text-align: center">{{getTime(this.range).join(':')}}</span>
+			</div>
+			<input type="range" [max]="game ? game.duration*1000 : 0" [(ngModel)]="range" class="w-100" />
+			<div class="button">
+				<button class="w-25" (click)="setRange(-100*speed)">Back</button>
+				<button class="w-25" (click)="togglePlayPause()" [ngStyle]="{'background' : playing ? 'green' : ''}">play</button>
+				<button class="w-25" (click)="setRange(100*speed)">next</button>
+			</div>
+		</div>
+	</div>
+</div>
