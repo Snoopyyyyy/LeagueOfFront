@@ -81,7 +81,9 @@
         -moz-box-align: center;
         align-items: center;
         height: 96px;
-        background-color: var(--red100);
+        background-color: white;
+        /* box-shadow: 4px 4px 4px #fcfcfc; */
+        border-radius: 15px;
       }
 
       .css .game {

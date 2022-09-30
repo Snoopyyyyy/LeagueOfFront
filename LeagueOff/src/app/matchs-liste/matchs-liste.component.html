@@ -1,27 +1,20 @@
-<!-- <div class="container principalcontainer">
-	<a *ngFor="let game of games" class="navbar-brand">
+<div class="bg-t">
+<div class="">
+	<form (ngSubmit)="submit()">
+		<select class="form-select w-90 m-auto mb-4" [(ngModel)]="region" name="region">
+			<option disabled selected value="">Serveur</option>
+			<option value="EUW1">EUW1</option>
+		</select>
 
-		<div class="parent">
-			<div class="div1"> </div>
-			<div class="div2"><img src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}" alt="champ logo" class="champ-icon"></div>
-			<div class="div3"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item0!)}}" alt="objects" class="itemicon"> </div>
-			<div class="div4"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item1!)}}" alt="objects" class="itemicon"></div>
-			<div class="div5"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item2!)}}" alt="objects" class="itemicon"> </div>
-			<div class="div6"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item3!)}}" alt="objects" class="itemicon"> </div>
-			<div class="div7"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item4!)}}" alt="objects" class="itemicon"> </div>
-			<div class="div8"><img src="{{Fixdata.getItemIcon(game.currentPlayer.item5!)}}" alt="objects" class="itemicon"> </div>
-			<div class="div9"><img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner1!)}}"  class="iconsum"></div>
-			<div class="div10"><img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner2!)}}" class="iconsum"></div>
-			<div class="div11"><img src="{{Fixdata.getRuneIcon(game.currentPlayer.FirstRune!)}}" alt="Rune1"></div>
-			<div class="div12"><img src="{{Fixdata.getRuneIcon(game.currentPlayer.SecondRune!)}}" alt="Rune2"></div>
-			<div class="div13">{{game.currentPlayer.kills!}} / {{game.currentPlayer.deaths!}} / {{game.currentPlayer.assists!}}</div>
-			<div class="div14">CS {{game.currentPlayer.cs!}}</div>
-			<div class="div15"> </div>
-			</div>  
-
-		<hr>
-	</a>
-</div> -->
+		<div class="input-group mobile_search mb-3">
+			<input type="text" class="form-control" placeholder="Summoner" [(ngModel)]="summonerName" name="summonerName"/>
+			<div class="input-group-append">
+				<button class="btn btn-ok" type="submit">GO</button>
+			</div>
+		</div>
+	</form>
+	<span class="text-error">{{error}}</span>
+</div>
 
 <div class="container principalcontainer">
 	<a *ngFor="let game of games" class="navbar-brand">
@@ -29,7 +22,7 @@
 <li class="css-1qq23jn e1iiyghw3">
 	<div result="LOSE" class="css e1iiyghw2">
 		<div class="game">
-			<div class="type">Type de game</div>
+			<div class="type">{{game.gameMode!}}</div>
 			<div class="time-stamp">
 				<div style="position: relative;" class="">{{game.date!}}</div>
 			</div>
@@ -193,7 +186,6 @@
 		
 	</div>
 </li>
-
-<hr>
 </a>
 </div> 
+</div>

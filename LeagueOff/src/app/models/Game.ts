@@ -7,6 +7,7 @@ export class Game {
 	date!: Date;
 	duration!: number;
 	currentPlayer!: Player;
+	gameMode! : string;
 
 
 	players: Player[];

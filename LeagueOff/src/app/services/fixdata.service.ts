@@ -45,4 +45,8 @@ export class FixdataService {
 		const kda = (kills+assists)/deaths;
         return kda;
     }
+
+    getSummonerName(SummonerName : string) : string {
+        return SummonerName;
+    }
 }
