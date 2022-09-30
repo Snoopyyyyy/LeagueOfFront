@@ -40,4 +40,15 @@ export class FixdataService {
 	getSummonerSpellIcon(summonerId: number): string {
 		return "https://ddragon.leagueoflegends.com/cdn/"+this.version+"/img/spell/"+this.summonerSpellName[summonerId];
 	}
+
+	getTime(timestamp: number): string[] {
+		let second = Math.round(timestamp / 1000);
+		let secRest = second % 60;
+		let minutes = (second - secRest) / 60
+		return [
+			(minutes > 9 ? `` : '0') + minutes,
+			(secRest > 9 ? `` : '0') + secRest
+		];
+	}
+
 }

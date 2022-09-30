@@ -7,19 +7,23 @@
 
 			<app-map-icon
 					*ngFor="let event of kills"
-					class="ping death"
+					class="ping death kill-{{event.killerId}} victim-{{event.victimId}}"
+					[game]="game!"
 					[event]="event"
 					[range]="range"
+					[ngClass]="isSelected(event) ? 'selected' : ''"
+					(click)="selectedEvent = !isSelected(event) ? event : undefined"
 					[ngStyle]="{
 					'bottom': (100*event.position.y)/15000+'%',
 					'left': (100*event.position.x)/15000+'%',
 					'background': event.killerId > 5 ? '#FF4444' : '#008FFF',
-					'opacity': event.timestamp < range ? ( event.timestamp  + 60000 > range ? '100%' : '25%') : '0%'
-				}"></app-map-icon>
+					'opacity': event.timestamp < range ? ( event.timestamp  + 60000 > range ? '100%' : '25%') : '0%'}">
+			</app-map-icon>
 
 			<app-map-icon
 					*ngFor="let event of objective"
 					class="ping obj"
+					[game]="game!"
 					[event]="event"
 					[range]="range"
 					[ngStyle]="{
@@ -28,18 +32,48 @@
 					'background-image': 'url('+getObjectiveIcon(event.monsterSubType ?? event.monsterType)+')',
 					'visibility': event.spawn < range && range < event.timestamp ? 'visible' : 'hidden'}">
 			</app-map-icon>
+
+
+
 		</div>
+		<div class="popup-container w-100">
+			<div class="popup d-flex justify-content-between" *ngIf="selectedEvent != null && selectedEvent.type === 'CHAMPION_KILL'">
+				<img src="{{Fixdata.getChampionIcon(getPlayer(selectedEvent.killerId).championName!)}}"/>
+				<p>X</p>
+				<img src="{{Fixdata.getChampionIcon(getPlayer(selectedEvent.victimId).championName!)}}"/>
+				<p>{{Fixdata.getTime(selectedEvent.timestamp).join(':')}}</p>
+			</div>
+		</div>
+
+		<div class="scoreboard">
+			<div class="teamScore">
+				coucou
+			</div>
+
+			<div class="playerScore d-flex" *ngFor="let post of teamPlayer">
+				<div class="col h-100 d-flex flex-row-reverse justify-content-between">
+					<img src="{{Fixdata.getChampionIcon(post.team1.championName)}}" height="100%"/>
+					<span>{{getKDA(post.team1.participantId)}}</span>
+				</div>
+				<div class="col h-100 d-flex flex-row justify-content-between">
+					<img src="{{Fixdata.getChampionIcon(post.team2.championName)}}" height="100%"/>
+					<span>0/0/0</span>
+				</div>
+			</div>
+		</div>
+
 		<div class="setting">
 			<div class="timeline w-100 d-flex" style="padding-bottom: 10px;">
-				<button (click)="nextSpeed()" class="w-25">x{{speed}}</button>
-				<span class="w-50" style="text-align: center">{{getTime(this.range).join(':')}}</span>
+				<button (click)="nextSpeed()" class="btn btn-outline-secondary w-25">x{{speed}}</button>
+				<span class="w-50" style="text-align: center">{{Fixdata.getTime(this.range).join(':')}}</span>
 			</div>
 			<input type="range" [max]="game ? game.duration*1000 : 0" [(ngModel)]="range" class="w-100" />
 			<div class="button">
-				<button class="w-25" (click)="setRange(-100*speed)">Back</button>
-				<button class="w-25" (click)="togglePlayPause()" [ngStyle]="{'background' : playing ? 'green' : ''}">play</button>
-				<button class="w-25" (click)="setRange(100*speed)">next</button>
+				<button class="btn btn-primary w-25" (click)="setRange(-(10000/speed))">Back</button>
+				<button class="btn btn-primary w-25" (click)="togglePlayPause()" [ngStyle]="{'background' : playing ? 'green' : ''}">{{playing ? "pause" : "play"}}</button>
+				<button class="btn btn-primary w-25" (click)="setRange(10000/speed)">next</button>
 			</div>
 		</div>
+
 	</div>
 </div>

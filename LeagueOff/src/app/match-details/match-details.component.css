@@ -4,8 +4,8 @@
 	background-repeat: no-repeat, no-repeat;
 	aspect-ratio: 1/1;
 	width: 100%;
-	border-top-right-radius: 2%;
-	border-bottom: 2px solid black;
+	border-top-right-radius: 10px;
+	border-top-left-radius: 10px;
 }
 
 .setting {
@@ -20,7 +20,7 @@
 	width: 100%;
 	padding: 0;
 	border: 2px solid black;
-	border-radius: 2%;
+	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -50,9 +50,7 @@
 	margin-left: -1.5%;
 	margin-bottom: -1.5%;
 	border-radius: 50%;
-	border-width: 1px;
-	border-style: solid;
-	border-color: black;
+	border: 1px solid #111111;
 }
 
 .obj {
@@ -62,4 +60,55 @@
 	margin-bottom: -2.75%;
 	background-size: cover;
 	background-repeat: no-repeat;
+}
+
+.popup {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 2px;
+	width: 40%;
+	margin-bottom: 10px;
+	background: lightgrey;
+	border: 2px solid;
+}
+
+.popup > img {
+	border-radius: 50%;
+	border: 2px solid #111111;
+	height: 30px;
+	aspect-ratio: 1 / 1;
+}
+
+.popup > p {
+	padding: 0;
+	margin: 0;
+}
+
+
+.selected {
+	border-color: white;
+	border-width: 3px;
+	opacity: 1 !important;
+}
+
+.popup-container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.btn {
+	padding: 1%;
+}
+
+
+.scoreboard {
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	width: 100%;
+}
+
+.playerScore {
+	height: 25px;
 }
