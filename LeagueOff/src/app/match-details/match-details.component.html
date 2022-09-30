@@ -7,7 +7,7 @@
 
 			<app-map-icon
 					*ngFor="let event of kills"
-					class="ping death kill-{{event.killerId}} victim-{{event.victimId}}"
+					class="ping death kill-{{event.killerId}} victim-{{event.victimId}}{{event.assistingParticipantIds ? ' assist-'+event.assistingParticipantIds.join(' assist-') : ''}} visible-{{event.timestamp <= range}}"
 					[game]="game!"
 					[event]="event"
 					[range]="range"
@@ -50,14 +50,41 @@
 				coucou
 			</div>
 
-			<div class="playerScore d-flex" *ngFor="let post of teamPlayer">
+			<div class="playerScore d-flex ps-2 pe-2 border" *ngFor="let post of teamPlayer">
 				<div class="col h-100 d-flex flex-row-reverse justify-content-between">
 					<img src="{{Fixdata.getChampionIcon(post.team1.championName)}}" height="100%"/>
-					<span>{{getKDA(post.team1.participantId)}}</span>
+					<span style="width: 25%">{{getKDA(post.team1.participantId)}}</span>
+
+					<!--<div class="h-100 d-flex flex-column items-list pb-1 pt-1">
+						<div class="w-100 d-flex h-50">
+							<img alt="" src="{{Fixdata.getItemIcon(post.team1.item0)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team1.item1)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team1.item2)}}" height="100%"/>
+						</div>
+						<div class="w-100 d-flex h-50">
+							<img alt="" src="{{Fixdata.getItemIcon(post.team1.item3)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team1.item4)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team1.item5)}}" height="100%"/>
+						</div>
+					</div>-->
+					<span>{{getWard(post.team2.participantId)}}</span>
 				</div>
 				<div class="col h-100 d-flex flex-row justify-content-between">
 					<img src="{{Fixdata.getChampionIcon(post.team2.championName)}}" height="100%"/>
-					<span>0/0/0</span>
+					<span style="width: 25%">{{getKDA(post.team2.participantId)}}</span>
+					<!--<div class="h-100 d-flex flex-column items-list pb-1 pt-1">
+						<div class="w-100 d-flex h-50">
+							<img alt="" src="{{Fixdata.getItemIcon(post.team2.item0)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team2.item1)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team2.item2)}}" height="100%"/>
+						</div>
+						<div class="w-100 d-flex h-50">
+							<img alt="" src="{{Fixdata.getItemIcon(post.team2.item3)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team2.item4)}}" height="100%"/>
+							<img alt="" src="{{Fixdata.getItemIcon(post.team2.item5)}}" height="100%"/>
+						</div>
+					</div>-->
+					<span>{{getWard(post.team2.participantId)}}</span>
 				</div>
 			</div>
 		</div>

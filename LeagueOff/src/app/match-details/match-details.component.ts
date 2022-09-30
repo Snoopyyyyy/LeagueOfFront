@@ -6,6 +6,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {Game} from "../models/Game";
 import {spawn} from "child_process";
 import {Player} from "../models/Player";
+import {GameItem} from "../models/GameItem";
 
 @Component({
 	selector: 'app-match-details',
@@ -26,6 +27,7 @@ export class MatchDetailsComponent implements OnInit {
 	selectedEvent?: any;
 	kills: any[] = [];
 	objective: any[] = [];
+	gameItems!: GameItem[][];
 
 	posts: string[] = ['TOP', 'JUNGLE', 'MIDDLE', 'BOTTOM', 'UTILITY'];
 	teamPlayer: any[] = [];
@@ -43,7 +45,7 @@ export class MatchDetailsComponent implements OnInit {
 				let team1 = this.game.players.filter(p => p.teamId === 100);
 				let team2 = this.game.players.filter(p => p.teamId === 200);
 
-				for(let post of this.posts) {
+				for (let post of this.posts) {
 					this.teamPlayer.push({
 						poser: post,
 						team1: team1.find(p => p.post == post),
@@ -51,9 +53,7 @@ export class MatchDetailsComponent implements OnInit {
 					})
 				}
 
-				console.log(this.teamPlayer)
-
-
+				let rawItems: any[] = [];
 				this.game.events.forEach(event => {
 					switch (event.type) {
 						case "CHAMPION_KILL":
@@ -61,26 +61,24 @@ export class MatchDetailsComponent implements OnInit {
 							break;
 						case "ELITE_MONSTER_KILL":
 							this.objective.push(event)
+							break
+						case "ITEM_PURCHASED":
+						case "ITEM_SOLD":
+						case "ITEM_DESTROYED":
+							rawItems.push(event);
 							break;
 					}
 				});
-
 				let heralds = this.getHeralds();
 				let barons = this.getNashor();
 				let drakes = this.getDrakes();
-				//this.selectedEvent = this.kills[0];
+
 				this.objective = [...heralds, ...barons, ...drakes].sort((a, b) => a.timestamp - b.timestamp);
-				/*console.log(this.objective.map(h => {
-					return {
-						monster: h.monsterSubType ?? h.monsterType,
-						spawn: this.getTime(h.spawn).join(':'),
-						kill: this.getTime(h.timestamp).join(':')
-					}
-				}))*/
 				this.game.soul = drakes.length > 2 ? drakes[2].monsterSubType.replace("_DRAGON", "") : "";
 				this.soulMap = "/assets/img/map/map" + this.game.soul!.toLowerCase() + ".png";
 				this.mapSwitch = drakes.length > 2 ? drakes[2].timestamp : -1;
 
+				this.gameItems = this.getItems(rawItems);
 			});
 		}
 	}
@@ -134,6 +132,7 @@ export class MatchDetailsComponent implements OnInit {
 		}
 		return heralds
 	}
+
 	private getNashor(): any[] {
 		let barons = this.objective.filter(o => o.monsterType === "BARON_NASHOR");
 		barons = barons.map(b => {
@@ -149,9 +148,9 @@ export class MatchDetailsComponent implements OnInit {
 				},
 			}
 		});
-		let last = barons[barons.length-1];
-		if(last) {
-			if(last.timestamp + 6 * 60000 < this.game!.duration*1000) {
+		let last = barons[barons.length - 1];
+		if (last) {
+			if (last.timestamp + 6 * 60000 < this.game!.duration * 1000) {
 				barons.push({
 					"type": "ELITE_MONSTER_KILL",
 					"bounty": 0,
@@ -160,7 +159,7 @@ export class MatchDetailsComponent implements OnInit {
 						"x": 5007,
 						"y": 10471
 					},
-					"timestamp": this.game!.duration*1001,
+					"timestamp": this.game!.duration * 1001,
 					"monsterType": "BARON_NASHOR",
 					"killerTeamId": 0,
 					"assistingParticipantIds": [],
@@ -170,6 +169,7 @@ export class MatchDetailsComponent implements OnInit {
 		}
 		return barons;
 	}
+
 	private getDrakes(): any[] {
 		let drakes = this.objective.filter(o => o.monsterType === "DRAGON");
 		drakes = drakes.map(d => {
@@ -182,13 +182,22 @@ export class MatchDetailsComponent implements OnInit {
 		})
 		let drakesByTeam = [drakes.filter(d => d.killerTeamId === 100), drakes.filter(d => d.killerTeamId === 200)]
 		let last = drakes[drakes.length - 1];
-		if(last.timestamp + ((last.monsterSubType === "ELDER_DRAGON" || drakesByTeam[0].length > 4 || drakesByTeam[1].length > 4 )? 6 : 5) * 60000 < this.game!.duration*1000) {
+		if (last.timestamp + ((last.monsterSubType === "ELDER_DRAGON" || drakesByTeam[0].length > 4 || drakesByTeam[1].length > 4) ? 6 : 5) * 60000 < this.game!.duration * 1000) {
 			console.log('last drake not killed')
 		}
 		return drakes;
 	}
 
-	isSelected(event: any) : boolean {
+	private getItems(rawItems: any[]): GameItem[][] {
+		let items: GameItem[][] = [[], [], [], [], [], [], [], [], [], []]; // event par joueur
+		rawItems.forEach(item => {
+			let clearItem = this.Fixdata.getItem(item.itemId);
+			items[item.participantId-1].push(new GameItem(item.itemId, clearItem.stack != undefined ));
+		})
+		return items;
+	}
+
+	isSelected(event: any): boolean {
 		return this.selectedEvent && this.selectedEvent.type === event.type &&
 			this.selectedEvent.victimId === event.victimId &&
 			this.selectedEvent.killerId === event.killerId &&
@@ -231,9 +240,9 @@ export class MatchDetailsComponent implements OnInit {
 
 	nextSpeed() {
 		this.speed *= 10;
-		if(this.speed > 1000) {
+		if (this.speed > 1000) {
 			this.speed = 10;
-		}else if(this.speed > 100) {
+		} else if (this.speed > 100) {
 			this.speed = 600;
 		}
 	}
@@ -262,17 +271,24 @@ export class MatchDetailsComponent implements OnInit {
 	getPlayer(killerId: number): Player {
 		return this.game!.players.find(p => p.participantId === killerId)!;
 	}
+
 	getPlayerByPost(post: string): Player[] {
 		return this.game!.players.filter(p => p.post === post)!.sort((a, b) => a.teamId! - b.teamId!);
 	}
 
 	getKDA(participantId: number): string {
-		let rawKills = document.querySelectorAll("kill-"+participantId);
-		let rawDeaths = document.querySelectorAll("victim-"+participantId);
+		let rawKills = document.querySelectorAll(".kill-"+participantId+".visible-true");
+		let rawDeaths = document.querySelectorAll(".victim-"+participantId+".visible-true");
+		let rawAssist = document.querySelectorAll(".assist-"+participantId+".visible-true");
 
-		let kills = 0;
-		let death = 0;
+		let kills = rawKills.length;
+		let deaths = rawDeaths.length;
+		let assists = rawAssist.length;
 
-		return `/${kills}/${death}/0`;
+		return `${kills}/${deaths}/${assists}`;
+	}
+
+	getWard(participantId: number): string {
+		return "0";
 	}
 }

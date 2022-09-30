@@ -8,6 +8,7 @@ export class FixdataService {
 	url = "";
 	summonerSpellName: any = {};
 	runeIconsName: any = {};
+	itemsData: any = {};
 	version = "12.18.1";
 
 	constructor(private http: HttpClient) {
@@ -21,6 +22,12 @@ export class FixdataService {
 		http.get<any[]>("https://ddragon.leagueoflegends.com/cdn/"+this.version+"/data/fr_FR/runesReforged.json").subscribe(data => {
 			for(let rune of data) {
 				this.runeIconsName[rune.id+""] = rune.icon;
+			}
+		})
+
+		http.get<any>("https://ddragon.leagueoflegends.com/cdn/"+this.version+"/data/fr_FR/item.json").subscribe(data => {
+			for(let item in data.data) {
+				this.itemsData[item.toString()] = data.data[item.toString()];
 			}
 		})
 	}
@@ -49,6 +56,10 @@ export class FixdataService {
 			(minutes > 9 ? `` : '0') + minutes,
 			(secRest > 9 ? `` : '0') + secRest
 		];
+	}
+
+	getItem(itemId: number|string): any {
+		return this.itemsData[itemId];
 	}
 
 }
