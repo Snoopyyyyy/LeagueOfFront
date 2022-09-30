@@ -22,4 +22,6 @@ export class Player {
 	SecondRune?: number;
 	Summoner1?: number;
 	Summoner2?: number;
+
+
 }

@@ -23,10 +23,6 @@ html, body, drop-down-server, search-input {
 	height: 100%;
 }
 
-hr{
-	border-top: 2px solid  #F89B29;
-}
-
 .text-error {
 	color: red;
 	font-weight: bolder;

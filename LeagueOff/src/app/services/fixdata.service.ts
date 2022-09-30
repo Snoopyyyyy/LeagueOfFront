@@ -40,4 +40,9 @@ export class FixdataService {
     getSummonerSpellIcon(summonerId: number): string {
         return "https://ddragon.leagueoflegends.com/cdn/"+this.version+"/img/spell/"+this.summonerSpellName[summonerId];
     }
+
+    getKDA(kills: number, deaths:number, assists:number): number {
+		const kda = (kills+assists)/deaths;
+        return kda;
+    }
 }

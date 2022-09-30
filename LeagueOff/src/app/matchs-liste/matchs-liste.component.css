@@ -1,67 +1,346 @@
-@font-face {
-    font-family: InterBold;
-    src: url(/assets/font/Inter-Bold.ttf);
-}
-
-@font-face {
-    font-family: InterLight;
-    src: url(/assets/font/Inter-Light.ttf);
-}
-
-.principalcontainer{
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#champ-icon-col{
-    column-width: 100px;
-
-}
-.champ-icon{
-    width: 50%;
-    display: block;
-}
-.itemicon{
-    width: 50%;
-}
-
-h3{
-    font-size: 12px;
-    font-family: InterBold;
-}
-
-h4{
-    font-size: 10px;
-    font-family: InterLight;
-}
-
-.iconsum{
-    width: 20%;
-}
-
-
-.parent {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
+    @font-face {
+        font-family: InterBold;
+        src: url(/assets/font/Inter-Bold.ttf);
     }
+
+    @font-face {
+        font-family: InterLight;
+        src: url(/assets/font/Inter-Light.ttf);
+    }
+
+    .principalcontainer{
+        margin-top: 10px;
+        margin-left: 25%;
+        width: 50%;
+    }
+
+    @media only screen and (max-width: 600px) {
+        .principalcontainer{
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            width: 100%;
+        }
     
-    .div1 { grid-area: 1 / 1 / 4 / 9;}
-    .div2 { grid-area: 1 / 1 / 3 / 3; }
-    .div3 { grid-area: 3 / 1 / 4 / 2; }
-    .div4 { grid-area: 3 / 2 / 4 / 3; }
-    .div5 { grid-area: 3 / 3 / 4 / 4; }
-    .div6 { grid-area: 3 / 4 / 4 / 5; }
-    .div7 { grid-area: 3 / 5 / 4 / 6; }
-    .div8 { grid-area: 3 / 6 / 4 / 7; }
-    .div9 { grid-area: 1 / 3 / 2 / 5; }
-    .div10 { grid-area: 2 / 3 / 3 / 5; }
-    .div11 { grid-area: 1 / 5 / 2 / 7; }
-    .div12 { grid-area: 2 / 5 / 3 / 7; }
-    .div13 { grid-area: 1 / 7 / 2 / 9; }
-    .div14 { grid-area: 2 / 7 / 3 / 9; }
-    .div15 { grid-area: 3 / 7 / 4 / 9; }
+      }
+
+    #champ-icon-col{
+        column-width: 100px;
+
+    }
+
+    .champ-icon{
+        width: 48px;
+        display: block;
+    }
+    .itemicon{
+        width: 50%;
+    }
+
+    h3{
+        font-size: 12px;
+        font-family: InterBold;
+    }
+
+    h4{
+        font-size: 10px;
+        font-family: InterLight;
+    }
+
+    .iconsum{
+        width: 20%;
+    }
+
     
+    hr{
+        border-top: 3px solid  #F89B29;
+    }
+
+
+    .css-1qq23jn {
+        position: relative;
+        margin-bottom: 8px;
+      }
+    
+      ol, ul, li {
+        list-style: none;
+      }
+
+      dl, dt, dd, ol, ul, li {
+        list-style: none;
+        margin: 0px;
+          margin-bottom: 0px;
+        padding: 0px;
+      }
+      .css-150oaqg {
+        font-size: 12px;
+      }
+
+      .css {
+        display: flex;
+        -moz-box-align: center;
+        align-items: center;
+        height: 96px;
+        background-color: var(--red100);
+      }
+
+      .css .game {
+        width: 108px;
+        margin-left: 12px;
+        color: var(--gray500);
+        line-height: 16px;
+      }
+
+      .css .game .type {
+        font-weight: bold;
+        color: var(--red600);
+      }
+
+      .css .game {
+        color: var(--gray500);
+        line-height: 16px;
+      }
+
+      .css .info {
+        margin-left: 8px;
+      }
+
+      .css .info > div:nth-of-type(1) .champion {
+        display: flex;
+        -moz-box-align: center;
+        align-items: center;
+      }
+      .css .info > div:nth-of-type(1) .champion .icon a {
+        position: relative;
+        display: block;
+        width: 48px;
+        height: 48px;
+      }
+
+      .css .info > div:nth-of-type(1) .champion .spells {
+        margin-left: 4px;
+      }
+
+      .css .info > div:nth-of-type(1) .champion .spells .spell:nth-of-type(1) {
+        width: 22px;
+        height: 22px;
+        margin-bottom: 2px;
+      }
+
+      .css .info > div:nth-of-type(1) .champion .spells .spell img {
+        display: block;
+        border-radius: 4px;
+      }
+
+      .css .info > div:nth-of-type(1) .champion .runes {
+        margin-left: 2px;
+      }
+
+      .css .info > div:nth-of-type(1) .kda {
+        display: flex;
+        flex-direction: column;
+        -moz-box-pack: center;
+        justify-content: center;
+        position: relative;
+        width: 107px;
+        padding-right: 12px;
+        margin-right: 8px;
+        margin-left: 12px;
+      }
+
+      .css .info > div:nth-of-type(1) .kda .k-d-a {
+        line-height: 22px;
+        font-size: 15px;
+        color: var(--gray400);
+        font-family: "InterBold";
+        text-align: center;
+      }
+
+      .css .info > div:nth-of-type(1) .kda .k-d-a span {
+        font-weight: bold;
+        color: var(--gray900);
+      }
+
+      .css .info > div:nth-of-type(1) .kda .k-d-a .d {
+        color: var(--red600);
+      }
+
+      .css .info > div:nth-of-type(1) .kda .ratio {
+        line-height: 16px;
+        color: var(--gray500);
+        text-align: center;
+      }
+
+      .css .info > div:nth-of-type(1) .stats {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 140px;
+        color: var(--gray500);
+        font-size: 11px;
+        margin-left: 10px;
+      }
+
+      .css .info > div:nth-of-type(1) .stats .p-kill {
+        color: var(--red600);
+      }
+
+      .css .info > div:nth-of-type(1) .stats {
+        color: var(--gray500);
+        font-size: 11px;
+        margin-top: auto;
+      }
+
+      .css .info > div:nth-of-type(1) .stats .average-tier {
+        font-weight: 700;
+        text-transform: capitalize;
+        font-family: "InterBold";
+      }
+
+      .css .info > div:nth-of-type(2) {
+        display: flex;
+        -moz-box-align: center;
+        align-items: center;
+        margin-top: 8px;
+      }
+
+      .css .info > div:nth-of-type(2) .items {
+        display: flex;
+      }
+
+      .css .info > div:nth-of-type(2) .items ul {
+        display: flex;
+      }
+      .css .info > div:nth-of-type(2) .items ul li:nth-of-type(1) {
+        margin-left: 0px;
+      }
+
+      .css .info > div:nth-of-type(2) .items ul li img {
+        border-radius: 4px;
+      }
+
+      .css .info > div:nth-of-type(2) .items ul li {
+        width: 22px;
+        height: 22px;
+        margin-left: 2px;
+        background-color: var(--red300);
+        border-radius: 4px;
+      }
+
+      .css .info > div:nth-of-type(2) .items .ward {
+        width: 22px;
+        height: 22px;
+        margin-left: 2px;
+        margin-right: 4px;
+        background-color: var(--red300);
+        border-radius: 50%;
+      }
+
+      .css .info > div:nth-of-type(2) .items .ward img {
+        border-radius: 50%;
+      }
+
+      .css .participants {
+        display: flex;
+        margin-left: 12px;
+      }
+
+      .css .participants ul:nth-of-type(1) {
+        margin-right: 8px;
+      }
+
+      .css-particip {
+        display: flex;
+        -moz-box-align: center;
+        align-items: center;
+        width: 88px;
+        height: 18px;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .css-particip .icon {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 4px;
+      }
+
+      .css-particip .icon img {
+        display: block;
+        width: 16px;
+        height: 16px;
+        border-radius: 4px;
+      }
+
+      .css-particip .name {
+        display: inline-block;
+        max-width: 60px;
+        vertical-align: middle;
+        color: var(--gray500);
+      }
+
+      .css-particip .name {
+        font-size: 12px;
+        color: inherit;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+
+      .css-particip {
+        display: flex;
+        -moz-box-align: center;
+        align-items: center;
+        width: 88px;
+        height: 18px;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      dl, dt, dd, ol, ul, li {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+      }
+
+      .css .info > div:nth-of-type(1) {
+        display: flex;
+      }
+
+      .ratio > * {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      .css .info > div:nth-of-type(1) .kda::after {
+        content: "";
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        width: 1px;
+        height: 100%;
+        background-color: var(--red200);
+      }
+
+      .css .info > div:nth-of-type(1) .champion .icon .champion-level {
+        position: absolute;
+        right: 0px;
+        bottom: 0px;
+        display: flex;
+        -moz-box-align: center;
+        align-items: center;
+        -moz-box-pack: center;
+        justify-content: center;
+        width: 20px;
+        height: 20px;
+        font-size: 11px;
+        border-radius: 50%;
+        color: rgb(255, 255, 255);
+        background: rgb(32, 45, 55);
+        font-family: "InterBold";
+      }
