@@ -9,7 +9,7 @@
 }
 
 .setting {
-	padding: 10px;
+	padding: 0 10px 10px 10px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
@@ -54,10 +54,10 @@
 }
 
 .obj {
-	width: 5.5%;
-	height: 5.5%;
-	margin-left: -2.75%;
-	margin-bottom: -2.75%;
+	width: 5%;
+	height: 5%;
+	margin-left: -2.5%;
+	margin-bottom: -2.5%;
 	background-size: cover;
 	background-repeat: no-repeat;
 }
@@ -67,8 +67,6 @@
 	justify-content: center;
 	align-items: center;
 	padding: 2px;
-	width: 40%;
-	margin-bottom: 10px;
 	background: lightgrey;
 	border: 2px solid;
 }
@@ -77,6 +75,7 @@
 	border-radius: 50%;
 	border: 2px solid #111111;
 	height: 30px;
+	margin-inline: 5px;
 	aspect-ratio: 1 / 1;
 }
 
@@ -105,10 +104,44 @@
 
 .scoreboard {
 	border-top: 2px solid black;
-	border-bottom: 2px solid black;
+	border-bottom-right-radius: 10px;
+	border-bottom-left-radius: 10px;
 	width: 100%;
 }
 
 .playerScore {
-	height: 30px;
+	height: 35px;
+}
+
+.score {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 40px;
+	border-bottom: 2px solid black;
+}
+
+.score > img {
+	height: 50%;
+	aspect-ratio: 1 / 1;
+}
+
+.score-icon {
+	height: 50%;
+	aspect-ratio: 1 / 1;
+}
+
+.teamScore {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	font-size: large;
+	font-weight: bolder;
+}
+
+.timeline {
+	height: 48px;
 }

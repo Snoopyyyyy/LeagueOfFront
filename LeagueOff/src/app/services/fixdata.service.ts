@@ -33,7 +33,7 @@ export class FixdataService {
 	}
 
 	getChampionIcon(championName: string): string {
-		return "https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/"+championName+".png";
+		return "https://ddragon.leagueoflegends.com/cdn/12.18.1/img/champion/"+(championName === "FiddleSticks" ? "Fiddlesticks" : championName) +".png";
 	}
 
 	getItemIcon(itemId: number): string {
