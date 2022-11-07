@@ -18,7 +18,7 @@
                 <div class="round play-btn-grand">
                     <div class="round play-btn-moyen">
                         <div class="round play-btn-petit">
-                            <a href="liste.html"><img src="/assets/svg/play.png" width="45%" alt=""></a>
+                            <a href="#"><img src="/assets/svg/play.png" width="45%" alt=""></a>
                         </div>
                     </div>
                 </div>
@@ -39,11 +39,20 @@
                         <div class="details">
 
 							<form (ngSubmit)="submit()">
-								<select class="form-select form-select-lg mb-3 option" aria-label=".form-select-lg example" name="region" [(ngModel)]="region">
-									<option disabled selected value="">Serveur</option>
+								<select class="form-select form-select-lg mb-3 option" [ngStyle]="{'color': !region ? '#6c757d' : '#495057'}" aria-label=".form-select-lg example" name="region" [(ngModel)]="region">
+									<option disabled selected value="">Sélectionner le server</option>
 									<option value="EUW1">EUW1</option>
+									<option value="EUN1">EUN1</option>
+									<option value="JP1">JP1</option>
+									<option value="KR">KR</option>
+									<option value="LA1">LA1</option>
+									<option value="LA2">LA2</option>
+									<option value="NA1">NA1</option>
+									<option value="OC1">OC1</option>
+									<option value="TR1">TR1</option>
+									<option value="RU">RU</option>
 								  </select>
-								  
+
 								<div class="input-group mobile_search mb-3">
 									<input type="text" class="form-control" placeholder="Summoner" [(ngModel)]="summonerName" name="summonerName">
 									<div class="input-group-append">
@@ -52,7 +61,7 @@
 								  </div>
 							</form>
 							<span class="text-error">{{error}}</span>
-							
+
                         </div>
                         <div class="buy">
                         </div>
@@ -91,11 +100,11 @@
             </div>
         </div>
     </section>
-    
+
 </body>
 </html>
 
-<!-- 
+<!--
 <div class="fullscreen bg-t d-flex flex-column justify-content-center align-items-center">
 	<form (ngSubmit)="submit()">
 		<div id="logo_home">

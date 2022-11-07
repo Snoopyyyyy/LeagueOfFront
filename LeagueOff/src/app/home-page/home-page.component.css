@@ -207,7 +207,18 @@ section{
 }
 
 .option {
-    font-family: "InterBold";
+	font-family: "InterBold", sans-serif;
+	font-size: 1rem;
+	padding: 6px 12px;
+	border-radius: 0.375rem
+}
+
+.option > option {
+	color: #495057;
+}
+
+.option > option:first-child {
+	color: #999;
 }
 
 
