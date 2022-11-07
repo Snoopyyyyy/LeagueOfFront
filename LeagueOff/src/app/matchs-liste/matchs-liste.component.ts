@@ -14,8 +14,11 @@ import {FixdataService} from "../services/fixdata.service";
 export class MatchsListeComponent implements OnInit {
 	games?: Game[];
 	name?: string;
+	region: string = "";
+	summonerName: string = "";
+	error: string = "";
 
-	constructor(public Fixdata: FixdataService, private gameService: GameService,private summonerService: SummonerService, private router: Router, private route: ActivatedRoute) {
+	constructor(public Fixdata: FixdataService, private gameService: GameService,private summonerService: SummonerService, private router: Router, private route: ActivatedRoute, private _summonerService: SummonerService) {
 	}
 
 	ngOnInit(): void {
@@ -26,9 +29,26 @@ export class MatchsListeComponent implements OnInit {
 			this.gameService.getHistory(puuid).subscribe(games => {
 				this.games = games.map(game => {
 					game.currentPlayer = game.players.find(ply => ply.summonerName === this.name)!;
+					console.log(game.gameMode);
 					return game;
 				})
 			});
+		}
+	}
+
+	submit(): void {
+		console.log(this.region, this.summonerName)
+		this.error = "";
+		if(this.region != "" && this.summonerName != "") {
+			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
+				if(summoner.puuid != "") {
+					this.router.navigate([`/game/${summoner.name}/${summoner.puuid}`]);
+				}else {
+					this.error = "No summoner found"
+				}
+			})
+		}else{
+			this.error = "All field is required"
 		}
 	}
 
