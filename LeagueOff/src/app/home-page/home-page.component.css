@@ -5,3 +5,39 @@
     margin-right: auto;
     margin-bottom : 15%;
 }
+
+.btn-secondary{
+	background-color: white;
+	color : black;
+	border-width: 0px;
+}
+
+.btn-ok{
+	background-color: black;
+	color : white;
+	border-radius: 100px 100px 0px 100px;
+	border: 0px;
+}
+
+.btn-ok:hover {
+	background-color: black;
+	color : white;
+	border-radius: 100px 100px 0px 100px;
+	border: 0px;
+}
+
+input{
+	border: 0px;
+}
+
+.input-group-append{
+	background-color: white;
+	border-radius: 100px 100px 0px 100px;
+
+}
+
+.mobile_search{
+	margin-left: auto;
+	margin-right: auto;
+	width: 90%;
+}

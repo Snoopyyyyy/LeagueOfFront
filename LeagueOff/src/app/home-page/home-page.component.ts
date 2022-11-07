@@ -1,15 +1,42 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SummonerService} from "../services/summoner.service";
+import {ActivatedRoute, Router} from "@angular/router";
+import {FixdataService} from "../services/fixdata.service";
 
 @Component({
-  selector: 'app-home-page',
-  templateUrl: './home-page.component.html',
-  styleUrls: ['./home-page.component.css']
+	selector: 'app-home-page',
+	templateUrl: './home-page.component.html',
+	styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
+	region: string = "";
+	summonerName: string = "";
+	error: string = "";
 
-  constructor() { }
+	constructor(public _iconService: FixdataService, private _summonerService: SummonerService, private router: Router, private route: ActivatedRoute) {
+	}
 
-  ngOnInit(): void {
-  }
+	ngOnInit(): void {
+	}
+
+	setRegion(): void {
+
+	}
+
+	submit(): void {
+		console.log(this.region, this.summonerName)
+		this.error = "";
+		if(this.region != "" && this.summonerName != "") {
+			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
+				if(summoner.puuid != "") {
+					this.router.navigate([`/game/${summoner.name}/${summoner.puuid}`]);
+				}else {
+					this.error = "No summoner found"
+				}
+			})
+		}else{
+			this.error = "All field is required"
+		}
+	}
 
 }
