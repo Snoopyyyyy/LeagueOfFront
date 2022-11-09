@@ -12,26 +12,26 @@
 </head>
 
 <body>
-	<section>
+	<div class="bg">
+
+		<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
+		<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
+	
+	</div>
+
+	<section class="container">
+
 		<div class="left">
-			<div class="bg-left">
-				<img src="/assets/img/bg-right.png" alt="">
-			</div>
+			
 		</div>
 
 		<div class="right">
-			<div class="bg-right">
-				<img src="/assets/img/bg-right.png" alt="">
-			</div>
-			<div class="particle">
-				<img src="/assets/img/particle.png" alt="">
-			</div>
 			<div class="container">
 				<div class="container principalcontainer">
 					<a *ngFor="let game of games" class="navbar-brand">
 
 						<li class="css-1qq23jn">
-							<div class="css e1iiyghw2 {{true ? 'win' : 'loose'}}">
+							<div class="css e1iiyghw2">
 								<div class="game">
 									<div class="type">{{game.gameMode!}}</div>
 									<div class="time-stamp">

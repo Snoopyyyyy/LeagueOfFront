@@ -413,23 +413,23 @@ section{
 
 
 .left{
-  width: 45%;
+  width: 25%;
   height: 100%;
 }
 
-.left .bg{
-  /* background-image: url(/assets/img/bg-left2.png); */
+.bg-icon {
   height: 100%;
-  background-size: cover;
-  background-position: right;
-  position: relative;
-}
-
-.left .bg img {
   position: absolute;
-  top : 18%;
-  right : 18%;
-  width: 60%;
+  top : 0;
+  right : 0;
+}
+
+.bg-icon:first-child {
+  height: 100%;
+  position: absolute;
+  top : 0;
+  left: 0;
+  transform: rotate(180deg);
 }
 
 .play-btn{
@@ -472,7 +472,7 @@ section{
 }
 
 .right {
-  width: 55%;
+  width: 75%;
   height: 100%;
   padding-left: 70px;
 }
@@ -498,7 +498,6 @@ section{
   left: 0;
   height: 100%;
   z-index: 3;
-  transform: rotate(180deg);
 }
 
 .particle img{
