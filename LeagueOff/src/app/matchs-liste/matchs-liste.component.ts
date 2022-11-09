@@ -3,7 +3,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {GameService} from "../services/game.service";
 import {Game} from "../models/Game";
 import {SummonerService} from "../services/summoner.service";
-import {Player} from "../models/Player";
 import {FixdataService} from "../services/fixdata.service";
 
 @Component({
@@ -41,15 +40,32 @@ export class MatchsListeComponent implements OnInit {
 		this.error = "";
 		if(this.region != "" && this.summonerName != "") {
 			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
-				if(summoner.puuid != "") {
+				if (summoner.puuid != "") {
 					this.router.navigate([`/game/${summoner.name}/${summoner.puuid}`]);
-				}else {
+				} else {
 					this.error = "No summoner found"
 				}
 			})
-		}else{
+		} else {
 			this.error = "All field is required"
 		}
+	}
+
+	getTime(second: number): string {
+		let res = second % 60;
+		let secStr = (res < 10 ? "0" : "") + res;
+		let minutes = (second - res) / 60;
+		let minStr = (minutes < 10 ? "0" : "") + minutes;
+
+		return `${minStr}:${secStr}`;
+	}
+
+	getDate(date: any): string {
+		let newDate = new Date(date.date);
+		let day = String(newDate.getDate()).padStart(2, '0');;
+		let month = String(newDate.getMonth()).padStart(2, '0');
+		let year = newDate.getFullYear();
+		return [day, month, year].join('/');
 	}
 
 }

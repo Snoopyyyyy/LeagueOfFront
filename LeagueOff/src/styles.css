@@ -8,6 +8,7 @@
 
 html, body {
 	height: 100%;
+	background-color: #101010;
 }
 
 html, body, drop-down-server, search-input {
