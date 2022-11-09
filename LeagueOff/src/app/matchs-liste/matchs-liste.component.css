@@ -1,348 +1,719 @@
-    @font-face {
-        font-family: InterBold;
-        src: url(/assets/font/Inter-Bold.ttf);
-    }
+:root {
+  --win-border: #5383e8;
+  --win-bg: #28344e;
+  --loose-border: #e84057;
+  --loose-bg: #59343b;
+}
 
-    @font-face {
-        font-family: InterLight;
-        src: url(/assets/font/Inter-Light.ttf);
-    }
+@font-face {
+  font-family: InterBold;
+  src: url(/assets/font/Inter-Bold.ttf);
+}
 
-    .principalcontainer{
-        margin-top: 10px;
-        margin-left: 25%;
-        width: 50%;
-    }
+@font-face {
+  font-family: InterLight;
+  src: url(/assets/font/Inter-Light.ttf);
+}
 
-    @media only screen and (max-width: 600px) {
-        .principalcontainer{
-            margin-top: 10px;
-            margin-left: auto;
-            margin-right: auto;
-            width: 100%;
-        }
-    
-      }
+.principalcontainer {
+  margin-top: 10px;
+  margin-left: 25%;
+  width: 50%;
+}
 
-    #champ-icon-col{
-        column-width: 100px;
+@media only screen and (max-width: 600px) {
+  .principalcontainer {
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
 
-    }
+}
 
-    .champ-icon{
-        width: 48px;
-        display: block;
-    }
-    .itemicon{
-        width: 50%;
-    }
+#champ-icon-col {
+  column-width: 100px;
 
-    h3{
-        font-size: 12px;
-        font-family: InterBold;
-    }
+}
 
-    h4{
-        font-size: 10px;
-        font-family: InterLight;
-    }
+.champ-icon {
+  width: 48px;
+  display: block;
+}
 
-    .iconsum{
-        width: 20%;
-    }
+.itemicon {
+  width: 50%;
+}
 
-    
-    hr{
-        border-top: 3px solid  #F89B29;
-    }
+h3 {
+  font-size: 12px;
+  font-family: InterBold;
+}
 
+h4 {
+  font-size: 10px;
+  font-family: InterLight;
+}
 
-    .css-1qq23jn {
-        position: relative;
-        margin-bottom: 8px;
-      }
-    
-      ol, ul, li {
-        list-style: none;
-      }
-
-      dl, dt, dd, ol, ul, li {
-        list-style: none;
-        margin: 0px;
-          margin-bottom: 0px;
-        padding: 0px;
-      }
-      .css-150oaqg {
-        font-size: 12px;
-      }
-
-      .css {
-        display: flex;
-        -moz-box-align: center;
-        align-items: center;
-        height: 96px;
-        background-color: white;
-        /* box-shadow: 4px 4px 4px #fcfcfc; */
-        border-radius: 15px;
-      }
-
-      .css .game {
-        width: 108px;
-        margin-left: 12px;
-        color: var(--gray500);
-        line-height: 16px;
-      }
-
-      .css .game .type {
-        font-weight: bold;
-        color: var(--red600);
-      }
-
-      .css .game {
-        color: var(--gray500);
-        line-height: 16px;
-      }
-
-      .css .info {
-        margin-left: 8px;
-      }
-
-      .css .info > div:nth-of-type(1) .champion {
-        display: flex;
-        -moz-box-align: center;
-        align-items: center;
-      }
-      .css .info > div:nth-of-type(1) .champion .icon a {
-        position: relative;
-        display: block;
-        width: 48px;
-        height: 48px;
-      }
-
-      .css .info > div:nth-of-type(1) .champion .spells {
-        margin-left: 4px;
-      }
-
-      .css .info > div:nth-of-type(1) .champion .spells .spell:nth-of-type(1) {
-        width: 22px;
-        height: 22px;
-        margin-bottom: 2px;
-      }
-
-      .css .info > div:nth-of-type(1) .champion .spells .spell img {
-        display: block;
-        border-radius: 4px;
-      }
-
-      .css .info > div:nth-of-type(1) .champion .runes {
-        margin-left: 2px;
-      }
-
-      .css .info > div:nth-of-type(1) .kda {
-        display: flex;
-        flex-direction: column;
-        -moz-box-pack: center;
-        justify-content: center;
-        position: relative;
-        width: 107px;
-        padding-right: 12px;
-        margin-right: 8px;
-        margin-left: 12px;
-      }
-
-      .css .info > div:nth-of-type(1) .kda .k-d-a {
-        line-height: 22px;
-        font-size: 15px;
-        color: var(--gray400);
-        font-family: "InterBold";
-        text-align: center;
-      }
-
-      .css .info > div:nth-of-type(1) .kda .k-d-a span {
-        font-weight: bold;
-        color: var(--gray900);
-      }
-
-      .css .info > div:nth-of-type(1) .kda .k-d-a .d {
-        color: var(--red600);
-      }
-
-      .css .info > div:nth-of-type(1) .kda .ratio {
-        line-height: 16px;
-        color: var(--gray500);
-        text-align: center;
-      }
-
-      .css .info > div:nth-of-type(1) .stats {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        width: 140px;
-        color: var(--gray500);
-        font-size: 11px;
-        margin-left: 10px;
-      }
-
-      .css .info > div:nth-of-type(1) .stats .p-kill {
-        color: var(--red600);
-      }
-
-      .css .info > div:nth-of-type(1) .stats {
-        color: var(--gray500);
-        font-size: 11px;
-        margin-top: auto;
-      }
-
-      .css .info > div:nth-of-type(1) .stats .average-tier {
-        font-weight: 700;
-        text-transform: capitalize;
-        font-family: "InterBold";
-      }
-
-      .css .info > div:nth-of-type(2) {
-        display: flex;
-        -moz-box-align: center;
-        align-items: center;
-        margin-top: 8px;
-      }
-
-      .css .info > div:nth-of-type(2) .items {
-        display: flex;
-      }
-
-      .css .info > div:nth-of-type(2) .items ul {
-        display: flex;
-      }
-      .css .info > div:nth-of-type(2) .items ul li:nth-of-type(1) {
-        margin-left: 0px;
-      }
-
-      .css .info > div:nth-of-type(2) .items ul li img {
-        border-radius: 4px;
-      }
-
-      .css .info > div:nth-of-type(2) .items ul li {
-        width: 22px;
-        height: 22px;
-        margin-left: 2px;
-        background-color: var(--red300);
-        border-radius: 4px;
-      }
-
-      .css .info > div:nth-of-type(2) .items .ward {
-        width: 22px;
-        height: 22px;
-        margin-left: 2px;
-        margin-right: 4px;
-        background-color: var(--red300);
-        border-radius: 50%;
-      }
-
-      .css .info > div:nth-of-type(2) .items .ward img {
-        border-radius: 50%;
-      }
-
-      .css .participants {
-        display: flex;
-        margin-left: 12px;
-      }
-
-      .css .participants ul:nth-of-type(1) {
-        margin-right: 8px;
-      }
-
-      .css-particip {
-        display: flex;
-        -moz-box-align: center;
-        align-items: center;
-        width: 88px;
-        height: 18px;
-        text-align: left;
-        white-space: nowrap;
-      }
-
-      .css-particip .icon {
-        display: inline-block;
-        vertical-align: middle;
-        margin-right: 4px;
-      }
-
-      .css-particip .icon img {
-        display: block;
-        width: 16px;
-        height: 16px;
-        border-radius: 4px;
-      }
-
-      .css-particip .name {
-        display: inline-block;
-        max-width: 60px;
-        vertical-align: middle;
-        color: var(--gray500);
-      }
-
-      .css-particip .name {
-        font-size: 12px;
-        color: inherit;
-        display: block;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-        overflow: hidden;
-      }
+.iconsum {
+  width: 20%;
+}
 
 
-      .css-particip {
-        display: flex;
-        -moz-box-align: center;
-        align-items: center;
-        width: 88px;
-        height: 18px;
-        text-align: left;
-        white-space: nowrap;
-      }
+hr {
+  border-top: 3px solid #F89B29;
+}
 
-      dl, dt, dd, ol, ul, li {
-        list-style: none;
-        margin: 0px;
-        padding: 0px;
-      }
 
-      .css .info > div:nth-of-type(1) {
-        display: flex;
-      }
+.css-1qq23jn {
+  position: relative;
+  margin-bottom: 8px;
+}
 
-      .ratio > * {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
+ol,
+ul,
+li {
+  list-style: none;
+}
 
-      .css .info > div:nth-of-type(1) .kda::after {
-        content: "";
-        position: absolute;
-        top: 0px;
-        right: 0px;
-        width: 1px;
-        height: 100%;
-        background-color: var(--red200);
-      }
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
+  list-style: none;
+  margin: 0px;
+  margin-bottom: 0px;
+  padding: 0px;
+}
 
-      .css .info > div:nth-of-type(1) .champion .icon .champion-level {
-        position: absolute;
-        right: 0px;
-        bottom: 0px;
-        display: flex;
-        -moz-box-align: center;
-        align-items: center;
-        -moz-box-pack: center;
-        justify-content: center;
-        width: 20px;
-        height: 20px;
-        font-size: 11px;
-        border-radius: 50%;
-        color: rgb(255, 255, 255);
-        background: rgb(32, 45, 55);
-        font-family: "InterBold";
-      }
+.css-150oaqg {
+  font-size: 12px;
+}
+
+.css {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  height: 96px;
+  background-color: white;
+  /* box-shadow: 4px 4px 4px #fcfcfc; */
+  border-radius: 15px;
+}
+
+.css .game {
+  width: 108px;
+  margin-left: 12px;
+  color: var(--gray500);
+  line-height: 16px;
+}
+
+.css .game .type {
+  font-weight: bold;
+  color: var(--red600);
+}
+
+.css .game {
+  color: var(--gray500);
+  line-height: 16px;
+}
+
+.css .info {
+  margin-left: 8px;
+}
+
+.css .info>div:nth-of-type(1) .champion {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+}
+
+.css .info>div:nth-of-type(1) .champion .icon a {
+  position: relative;
+  display: block;
+  width: 48px;
+  height: 48px;
+}
+
+.css .info>div:nth-of-type(1) .champion .spells {
+  margin-left: 4px;
+}
+
+.css .info>div:nth-of-type(1) .champion .spells .spell:nth-of-type(1) {
+  width: 22px;
+  height: 22px;
+  margin-bottom: 2px;
+}
+
+.css .info>div:nth-of-type(1) .champion .spells .spell img {
+  display: block;
+  border-radius: 4px;
+}
+
+.css .info>div:nth-of-type(1) .champion .runes {
+  margin-left: 2px;
+}
+
+.css .info>div:nth-of-type(1) .kda {
+  display: flex;
+  flex-direction: column;
+  -moz-box-pack: center;
+  justify-content: center;
+  position: relative;
+  width: 107px;
+  padding-right: 12px;
+  margin-right: 8px;
+  margin-left: 12px;
+}
+
+.css .info>div:nth-of-type(1) .kda .k-d-a {
+  line-height: 22px;
+  font-size: 15px;
+  color: var(--gray400);
+  font-family: "InterBold";
+  text-align: center;
+}
+
+.css .info>div:nth-of-type(1) .kda .k-d-a span {
+  font-weight: bold;
+  color: var(--gray900);
+}
+
+.css .info>div:nth-of-type(1) .kda .k-d-a .d {
+  color: var(--red600);
+}
+
+.css .info>div:nth-of-type(1) .kda .ratio {
+  line-height: 16px;
+  color: var(--gray500);
+  text-align: center;
+}
+
+.css .info>div:nth-of-type(1) .stats {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 140px;
+  color: var(--gray500);
+  font-size: 11px;
+  margin-left: 10px;
+}
+
+.css .info>div:nth-of-type(1) .stats .p-kill {
+  color: var(--red600);
+}
+
+.css .info>div:nth-of-type(1) .stats {
+  color: var(--gray500);
+  font-size: 11px;
+  margin-top: auto;
+}
+
+.css .info>div:nth-of-type(1) .stats .average-tier {
+  font-weight: 700;
+  text-transform: capitalize;
+  font-family: "InterBold";
+}
+
+.css .info>div:nth-of-type(2) {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.css .info>div:nth-of-type(2) .items {
+  display: flex;
+}
+
+.css .info>div:nth-of-type(2) .items ul {
+  display: flex;
+}
+
+.css .info>div:nth-of-type(2) .items ul li:nth-of-type(1) {
+  margin-left: 0px;
+}
+
+.css .info>div:nth-of-type(2) .items ul li img {
+  border-radius: 4px;
+}
+
+.css .info>div:nth-of-type(2) .items ul li {
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  background-color: var(--red300);
+  border-radius: 4px;
+}
+
+.css .info>div:nth-of-type(2) .items .ward {
+  width: 22px;
+  height: 22px;
+  margin-left: 2px;
+  margin-right: 4px;
+  background-color: var(--red300);
+  border-radius: 50%;
+}
+
+.css .info>div:nth-of-type(2) .items .ward img {
+  border-radius: 50%;
+}
+
+.css .participants {
+  display: flex;
+  margin-left: 12px;
+}
+
+.css .participants ul:nth-of-type(1) {
+  margin-right: 8px;
+}
+
+.css-particip {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  width: 88px;
+  height: 18px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+.css-particip .icon {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+}
+
+.css-particip .icon img {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.css-particip .name {
+  display: inline-block;
+  max-width: 60px;
+  vertical-align: middle;
+  color: var(--gray500);
+}
+
+.css-particip .name {
+  font-size: 12px;
+  color: inherit;
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+
+.css-particip {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  width: 88px;
+  height: 18px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+dl,
+dt,
+dd,
+ol,
+ul,
+li {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.css .info>div:nth-of-type(1) {
+  display: flex;
+}
+
+.ratio>* {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.css .info>div:nth-of-type(1) .kda::after {
+  content: "";
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 1px;
+  height: 100%;
+  background-color: var(--red200);
+}
+
+.css .info>div:nth-of-type(1) .champion .icon .champion-level {
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  -moz-box-pack: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  font-size: 11px;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  background: rgb(32, 45, 55);
+  font-family: "InterBold";
+}
+
+.win {
+  background-color: var(--win-bg);
+  border-left: 5px solid var(--win-border);
+}
+
+.loose {
+  background-color: var(--loose-bg0);
+  border-left: 5px solid var(--loose-border);
+}
+
+@font-face {
+  font-family: InterBold;
+  src: url(/assets/font/Inter-Bold.ttf);
+}
+
+@font-face {
+  font-family: InterLight;
+  src: url(/assets/font/Inter-Light.ttf);
+}
+
+*{
+  padding: 0;
+  margin : 0;
+  list-style: none;
+  font-family: InterBold;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #101010;
+  overflow: hidden;
+}
+
+section{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+}
+
+
+.left{
+  width: 45%;
+  height: 100%;
+}
+
+.left .bg{
+  /* background-image: url(/assets/img/bg-left2.png); */
+  height: 100%;
+  background-size: cover;
+  background-position: right;
+  position: relative;
+}
+
+.left .bg img {
+  position: absolute;
+  top : 18%;
+  right : 18%;
+  width: 60%;
+}
+
+.play-btn{
+  top : 50%;
+  right: 55%;
+  position: absolute;
+}
+
+.round{
+  top : 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%,-50%);
+  border-radius: 100%;
+}
+
+.round img{
+  top : 50%;
+  left: 50%;
+  position: relative;
+  transform: translate(-50%,-50%);
+}
+
+.play-btn-grand{
+  width: 125px;
+  height: 125px;
+  background: linear-gradient(45deg, #302388, #141c89);
+}
+
+.play-btn-moyen{
+  width: 100px;
+  height: 100px;
+  background: linear-gradient(45deg, #3385ad, #251aad);
+}
+
+.play-btn-petit{
+  width: 75px;
+  height: 75px;
+  background: linear-gradient(45deg, #64aff2, #290ebe);
+}
+
+.right {
+  width: 55%;
+  height: 100%;
+  padding-left: 70px;
+}
+
+.container{
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+
+.bg-right img{
+  position: absolute;
+  right: 0;
+  height: 100%;
+  z-index: 3;
+}
+
+
+.bg-left img{
+  position: absolute;
+  left: 0;
+  height: 100%;
+  z-index: 3;
+  transform: rotate(180deg);
+}
+
+.particle img{
+  position: absolute;
+  z-index: -9999;
+  top : 50%;
+  width: 100%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.box-up{
+  display: flex;
+  flex-direction: column;
+}
+
+.box-up .btn-box{
+  display: flex;
+  flex-direction: row;
+}
+
+.box-up h1{
+  color : white;
+  font-size: 90px;
+  text-transform: uppercase;
+  font-weight: 100;
+}
+
+
+.trait {
+  width: 500px;
+  height: 2px;
+  background: linear-gradient(to right, #445682, #263556);
+  border-radius: 50px;
+  margin : 50px 0;
+}
+
+.icon-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.icon{
+  width: 220px;
+  margin-right: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon img{
+  width: 50px;
+  margin:15px;
+}
+
+.icon .paragraphe h2{
+  color : white;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.icon .paragraphe p {
+  color : white;
+  font-family: "InterLight";
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.box-down{
+  position: absolute;
+  bottom: 80px;
+}
+
+.box-down ul{
+  display: flex;
+  flex-direction: row;
+}
+
+.box-down ul li{
+  margin-right: 40px;
+}
+
+.box-down ul a{
+  color : #a3b6e1;
+  font-size: 20px;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.btn-gradient{
+
+  background: linear-gradient(45deg, #3385ad, #251aad);
+  border-width: 0;
+}
+
+.option {
+font-family: "InterBold", sans-serif;
+font-size: 1rem;
+padding: 6px 12px;
+border-radius: 0.375rem
+}
+
+.option > option {
+color: #495057;
+}
+
+.option > option:first-child {
+color: #999;
+}
+
+
+@media (max-width:1300px){
+  section {
+      flex-direction: column-reverse;
+  }
+
+  .right {
+      width: 100%;
+      padding-left: 0px;
+      margin-top: 80px;
+  }
+
+  .left {
+      width: 100%;
+  }
+
+  .box-up{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+  }
+
+  .icon-box{
+      text-align: left;
+  }
+
+  .left .bg{
+      /* background-image: url(/assets/img/bg-left-rotate.png); */
+      background-position: top;
+  }
+  .play-btn{
+      display: none;
+  }
+
+  .left .bg img {
+      top :0;
+      left : 50%;
+      transform: translate(-50%);
+      width: 30%;
+  }
+
+  .bg-right{
+      display: none;
+  }
+
+  .icon-box{
+      justify-content: center;
+  }
+}
+
+@media (max-width:991px) and (min-width:780px){
+
+  .left .bg img{
+      top : 10%;
+      left : 50%;
+      transform: translate(-50%);
+      width: 20%;
+  }
+}
+
+@media (max-width:850px) and (min-width:600px){
+
+  .left .bg img{
+      top : 10%;
+      left : 50%;
+      transform: translate(-50%);
+      width: 24%;
+  }
+}
+
+@media (max-width:599px){
+
+  .left .bg img{
+      top : 10%;
+      left : 50%;
+      transform: translate(-50%);
+      width: 32%;
+  }
+  .trait{
+      width: 50%;
+  }
+}
+
+@media (max-width:630px){
+
+  .box-up h1{
+      font-size: 70px;
+  }
+}
+
+
+.particle h1{
+  color : white;
+  font-size: 90px;
+  text-transform: uppercase;
+  font-weight: 100;
+}
+
+.rectangle{
+  width:820px;
+  height:100px;
+  background:white;
+  border-radius: 25px;
+}
