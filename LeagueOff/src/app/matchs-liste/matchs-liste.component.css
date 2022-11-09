@@ -96,9 +96,7 @@ li {
   display: flex;
   -moz-box-align: center;
   align-items: center;
-  height: 96px;
   background-color: white;
-  /* box-shadow: 4px 4px 4px #fcfcfc; */
   border-radius: 15px;
 }
 
@@ -220,7 +218,6 @@ li {
   display: flex;
   -moz-box-align: center;
   align-items: center;
-  margin-top: 8px;
 }
 
 .css .info>div:nth-of-type(2) .items {
@@ -542,8 +539,6 @@ section{
 }
 
 .icon{
-  width: 220px;
-  margin-right: 50px;
   display: flex;
   flex-direction: row;
   align-items: center;
