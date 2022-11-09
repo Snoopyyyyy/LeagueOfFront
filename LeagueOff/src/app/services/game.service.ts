@@ -9,7 +9,7 @@ import {Observable} from "rxjs";
 
 export class GameService {
 	// TODO Mettre la bonne Url
-	url: string = "http://127.0.0.1:8000/api";
+	url: string = "http://www.leagueoff.site:8000/api";
 	httpOption = {
 		headers: new HttpHeaders({
 			'Content-type': 'application/json',
