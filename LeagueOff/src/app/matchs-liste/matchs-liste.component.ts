@@ -15,13 +15,17 @@ import { Summoner } from '../models/Summoner';
 })
 export class MatchsListeComponent implements OnInit {
 	games?: Game[];
+	showGames?: Game[];
+
 	name?: string;
 	region: string = "";
 	summonerName: string = "";
 	summoner?: Summoner;
 	error: string = "";
+	statistique: any = {};
+	gameModeFilter: string = '';
 	
-	constructor(public Fixdata: FixdataService, private gameService: GameService,private summonerService: SummonerService, private router: Router, private route: ActivatedRoute, private _summonerService: SummonerService) {
+	constructor(public Fixdata: FixdataService, private gameService: GameService, private summonerService: SummonerService, private router: Router, private route: ActivatedRoute, private _summonerService: SummonerService) {
 	}
 	
 	ngOnInit(): void {
@@ -34,6 +38,8 @@ export class MatchsListeComponent implements OnInit {
 					game.currentPlayer = game.players.find(ply => ply.summonerName === this.name)!;
 					return new Game(game);
 				})
+				this.showGames = [...this.games];
+				this.reloadStat();
 			});
 		});
 	}
@@ -41,7 +47,7 @@ export class MatchsListeComponent implements OnInit {
 	submit(): void {
 		console.log(this.region, this.summonerName)
 		this.error = "";
-		if(this.region != "" && this.summonerName != "") {
+		if (this.region != "" && this.summonerName != "") {
 			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
 				if (summoner.puuid != "") {
 					this.router.navigate([`/game/${summoner.name}/${summoner.puuid}`]);
@@ -84,5 +90,23 @@ export class MatchsListeComponent implements OnInit {
 	getPlayersFromTeam(team: Team): Player[] {
 		return Object.values(team.players);
 	}
-	
+
+	getPourCent(value: number): number {
+		return Math.round((value *100 / (this.showGames?.length ?? 0)) * 100) / 100
+	}
+
+	reloadStat() {
+		let stat = {
+			win: this.showGames?.filter(g => g.currentPlayer.win),
+			loose: this.showGames?.filter(g => !g.currentPlayer.win),
+		}
+		this.statistique = stat;
+	}
+
+	changeFilter(mode: string) {
+		this.gameModeFilter = mode;
+		let gameMode = mode ? new RegExp(mode) : new RegExp('.*');
+		this.showGames = this.games?.filter(g => g.gameMode.match(gameMode));
+		this.reloadStat();
+	}
 }

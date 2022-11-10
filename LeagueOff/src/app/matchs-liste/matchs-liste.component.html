@@ -14,7 +14,18 @@
 		</div>
 
 		<div class="statistique">
+			<div class="filter">
+				<a class="btn-filtre" [ngClass]="{'select': this.gameModeFilter === ''}" (click)="this.changeFilter('')">TOUS</a>
+				<a class="btn-filtre" [ngClass]="{'select': this.gameModeFilter === 'ARAM'}" (click)="this.changeFilter('ARAM')">ARAM</a>
+				<a class="btn-filtre" [ngClass]="{'select': this.gameModeFilter === 'CLASSIC'}" (click)="this.changeFilter('CLASSIC')">CLASSIC</a>
+			</div>
 
+			<div class="stat-data">
+				<div class="winrate">
+					<div class="wr-win" [ngStyle]="{'width': getPourCent(this.statistique?.win?.length)+'%'}">{{getPourCent(this.statistique?.win?.length)}}% ({{statistique?.win?.length}})</div>
+					<div class="wr-loose" [ngStyle]="{'width': getPourCent(this.statistique?.loose?.length)+'%'}">({{statistique?.loose?.length}}) {{getPourCent(this.statistique?.loose?.length)}}%</div>
+				</div>
+			</div>
 		</div>
 	</div>
 
@@ -25,7 +36,7 @@
 
 
 		<div class="history-container">
-			<a class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of games">
+			<a class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of this.showGames">
 				<div class="match-info">
 					<h5>{{game.gameMode}}</h5>
 					<span>{{getDate(game.date)}}</span>
@@ -61,7 +72,7 @@
 
 					<div class="player-items">
 						<div *ngFor="let item_slot of [0,1,2,3,4,5,6]" class="{{item_slot == 6 ? 'ward-slot': ''}}">
-							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" style="visibility: '{{!getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}}'" />
+							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" [ngStyle]="{'visibility': !getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}" />
 						</div>
 					</div>
 				</div>

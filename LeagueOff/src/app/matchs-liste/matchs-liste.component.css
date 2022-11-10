@@ -31,7 +31,7 @@
 .summoner, .search-summoner {
   width: 100%;
   min-height: 15%;
-  background-color: #202020;
+  background-color:#31313c;
   border-radius: 5px;
 }
 
@@ -50,14 +50,85 @@
   border-radius: 50%;
 }
 
+.stat-data {
+  width: 100%;
+  height: 100%;
+  background-color: #31313c;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
 .statistique {
   width: 100%;
   min-height: 85%;
-  background-color: #202020;
-  border-radius: 5px;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+.filter {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
 
+.btn-filtre {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: #fff;
+  cursor: pointer;
+  background-color: #1c1c1f;
+  border-bottom: 1px solid #1c1c1f;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+
+.select {
+  background-color: #31313c;
+  border-bottom: 0;
+  font-family: "InterBold";
+}
+
+.winrate {
+  width: 100%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border-radius: 5px;
+  padding: 10px;
+  font-family: "InterBold";
+}
+
+.wr-win {
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  background: #28344e;
+  padding: 5px 10px;
+	color: #5383da;
+}
+
+.wr-loose {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  padding: 5px 10px;
+	background: #59343b;
+	color: #e43a3f;
+}
 
 
 .container {
@@ -76,7 +147,7 @@
 .loose {
 	background: #59343b;
 	border-left: 5px solid #e84057;
-	color: #e43a3f;
+  color: #e43a3f;
   --item-bg: #703c47;
 }
 
@@ -261,7 +332,8 @@
   justify-content: center;
   background-color: var(--item-bg);
   border-radius: 5px;
-  font-family: "InterLight" !important;
+  color: #bcc4cc;
+  font-family: "InterLight";
 }
 
 .players > div {
