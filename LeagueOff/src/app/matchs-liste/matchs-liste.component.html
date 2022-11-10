@@ -61,7 +61,7 @@
 
 					<div class="player-items">
 						<div *ngFor="let item_slot of [0,1,2,3,4,5,6]" class="{{item_slot == 6 ? 'ward-slot': ''}}">
-							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" style="visibility: {{!getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}}" />
+							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" style="visibility: '{{!getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}}'" />
 						</div>
 					</div>
 				</div>
