@@ -8,7 +8,7 @@ import {Summoner} from "../models/Summoner";
 })
 export class SummonerService {
 	// TODO Mettre la bonne Url
-	url: string = "http://193.70.42.215:8000/api";
+	url: string = "http://www.leagueoff.site:8000/api";
 	httpOption = {
 		headers: new HttpHeaders({
 			'Content-type': 'application/json',
