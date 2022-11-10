@@ -5,6 +5,7 @@ import {Game} from "../models/Game";
 import {SummonerService} from "../services/summoner.service";
 import {FixdataService} from "../services/fixdata.service";
 import { Player } from '../models/Player';
+import { Team } from '../models/Team';
 
 @Component({
 	selector: 'app-matchs-liste',
@@ -29,8 +30,7 @@ export class MatchsListeComponent implements OnInit {
 			this.gameService.getHistory(puuid).subscribe(games => {
 				this.games = games.map(game => {
 					game.currentPlayer = game.players.find(ply => ply.summonerName === this.name)!;
-					console.log(game.gameMode);
-					return game;
+					return new Game(game);
 				})
 			});
 		}
@@ -77,6 +77,10 @@ export class MatchsListeComponent implements OnInit {
 	getKda(game: Game): number {
 		let kda = (game.currentPlayer.kills! + game.currentPlayer.assists!) / game.currentPlayer.deaths!
 		return Math.round(kda * 100) / 100;
+	}
+
+	getPlayersFromTeam(team: Team): Player[] {
+		return Object.values(team.players);
 	}
 
 }

@@ -3,7 +3,7 @@
 	<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
 </div>
 
-<section class="container" >
+<section class="container">
 	<div class="left">
 
 	</div>
@@ -52,14 +52,11 @@
 				</div>
 				
 				<div class="players-in-game">
-					<div class="players">
-						<div class="ply">
-							
+					<div class="players" *ngFor="let team of game.getTeams()">
+						<div *ngFor="let ply of getPlayersFromTeam(team)">
+							<img src="{{Fixdata.getChampionIcon(ply.championName!)}}" alt="{{ply.championName}}" />											
+							{{ply.summonerName}}
 						</div>
-					</div>
-					
-					<div class="players">
-
 					</div>
 				</div>
 			</a>

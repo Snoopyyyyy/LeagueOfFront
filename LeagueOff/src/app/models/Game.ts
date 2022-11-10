@@ -34,6 +34,7 @@ export class Game {
 
 	constructor(game: Game) {
 		// API
+		this.currentPlayer = game.currentPlayer;
 		this.matchId = game.matchId;
 		this.surrender = game.surrender;
 		this.date = game.date;
@@ -61,7 +62,7 @@ export class Game {
 			}
 		}
 
-		for (const event of game.events) {
+		for (const event of game.events ?? []) {
 			switch (event.type) {
 				case "CHAMPION_KILL":
 					event.killerTeamId = event.killerId > 5 ? 200 : 100;
