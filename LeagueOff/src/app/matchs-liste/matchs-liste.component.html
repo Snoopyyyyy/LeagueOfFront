@@ -18,12 +18,40 @@
 				</div>
 
 				<div class="match-player">
-					<div class="player-top">
+					<div class="player-info">
+						<div class="player-icon">
+							<img src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}" alt="{{game.currentPlayer.championName!}}"/>
+							<span>{{game.currentPlayer.level}}</span>
+						</div>
 
+						<div class="player-stuff">
+							<div class="stuff-top">
+								<img class="rune" src="{{Fixdata.getRuneIcon(game.currentPlayer.FirstRune!)}}" alt="Rune1">
+								<img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner1!)}}" alt="Sum1"/>
+							
+								<span class="stuff-info" style="align-items: flex-end;">
+									{{game.currentPlayer.kills}} / {{game.currentPlayer.deaths}} / {{game.currentPlayer.assists}}
+								</span>
+							</div>
+							<div class="stuff-bot">
+								<img class="rune" src="{{Fixdata.getRuneIcon(game.currentPlayer.SecondRune!)}}" alt="Rune2">
+								<img src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner2!)}}" alt="Sum2"/>
+							
+								<div class="stuff-info">
+									{{ getKda(game) }} KDA
+								</div>
+							</div>
+						</div>
 					</div>
 
-					<div class="player-bot">
+					<div class="player-items">
+						<div *ngFor="let item_slot of [0,1,2,3,4,5,6]" class="{{item_slot == 6 ? 'ward-slot': ''}}">
+							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" style="visibility: {{!getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}}" />
+						</div>
+					</div>
 
+					<div>
+						
 					</div>
 				</div>
 			</a>

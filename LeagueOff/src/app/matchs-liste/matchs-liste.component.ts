@@ -4,6 +4,7 @@ import {GameService} from "../services/game.service";
 import {Game} from "../models/Game";
 import {SummonerService} from "../services/summoner.service";
 import {FixdataService} from "../services/fixdata.service";
+import { Player } from '../models/Player';
 
 @Component({
 	selector: 'app-matchs-liste',
@@ -66,6 +67,16 @@ export class MatchsListeComponent implements OnInit {
 		let month = String(newDate.getMonth()).padStart(2, '0');
 		let year = newDate.getFullYear();
 		return [day, month, year].join('/');
+	}
+
+   getItem(ply: Player, slot: number): number {
+		let json = JSON.parse(JSON.stringify(ply));
+		return json["item" + slot];
+	}
+
+	getKda(game: Game): number {
+		let kda = (game.currentPlayer.kills! + game.currentPlayer.assists!) / game.currentPlayer.deaths!
+		return Math.round(kda * 100) / 100;
 	}
 
 }
