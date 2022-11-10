@@ -6,6 +6,7 @@ import {SummonerService} from "../services/summoner.service";
 import {FixdataService} from "../services/fixdata.service";
 import { Player } from '../models/Player';
 import { Team } from '../models/Team';
+import { Summoner } from '../models/Summoner';
 
 @Component({
 	selector: 'app-matchs-liste',
@@ -17,25 +18,26 @@ export class MatchsListeComponent implements OnInit {
 	name?: string;
 	region: string = "";
 	summonerName: string = "";
+	summoner?: Summoner;
 	error: string = "";
-
+	
 	constructor(public Fixdata: FixdataService, private gameService: GameService,private summonerService: SummonerService, private router: Router, private route: ActivatedRoute, private _summonerService: SummonerService) {
 	}
-
+	
 	ngOnInit(): void {
 		let name = this.route.snapshot.paramMap.get('name');
-		let puuid = this.route.snapshot.paramMap.get('puuid');
-		if (name && puuid) {
-			this.name = name;
-			this.gameService.getHistory(puuid).subscribe(games => {
+		this.name = name!;
+		this.summonerService.getSummoner(name!).subscribe((summoner) => {
+			this.summoner = summoner;
+			this.gameService.getHistory(summoner.puuid).subscribe(games => {
 				this.games = games.map(game => {
 					game.currentPlayer = game.players.find(ply => ply.summonerName === this.name)!;
 					return new Game(game);
 				})
 			});
-		}
+		});
 	}
-
+	
 	submit(): void {
 		console.log(this.region, this.summonerName)
 		this.error = "";
@@ -51,16 +53,16 @@ export class MatchsListeComponent implements OnInit {
 			this.error = "All field is required"
 		}
 	}
-
+	
 	getTime(second: number): string {
 		let res = second % 60;
 		let secStr = (res < 10 ? "0" : "") + res;
 		let minutes = (second - res) / 60;
 		let minStr = (minutes < 10 ? "0" : "") + minutes;
-
+		
 		return `${minStr}:${secStr}`;
 	}
-
+	
 	getDate(date: any): string {
 		let newDate = new Date(date.date);
 		let day = String(newDate.getDate()).padStart(2, '0');;
@@ -68,19 +70,19 @@ export class MatchsListeComponent implements OnInit {
 		let year = newDate.getFullYear();
 		return [day, month, year].join('/');
 	}
-
-   getItem(ply: Player, slot: number): number {
+	
+	getItem(ply: Player, slot: number): number {
 		let json = JSON.parse(JSON.stringify(ply));
 		return json["item" + slot];
 	}
-
+	
 	getKda(game: Game): number {
 		let kda = (game.currentPlayer.kills! + game.currentPlayer.assists!) / game.currentPlayer.deaths!
 		return Math.round(kda * 100) / 100;
 	}
-
+	
 	getPlayersFromTeam(team: Team): Player[] {
 		return Object.values(team.players);
 	}
-
+	
 }

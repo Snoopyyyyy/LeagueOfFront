@@ -5,10 +5,25 @@
 
 <section class="container">
 	<div class="left">
+		<div class="summoner">
+			<img src="http://ddragon.leagueoflegends.com/cdn/12.21.1/img/profileicon/{{summoner?.profileIconId}}.png" />
+			<div>
+				<h2>{{summoner?.name}}</h2>
+				<span>Niveau: <strong>{{summoner?.summonerLevel}}</strong></span>
+			</div>
+		</div>
 
+		<div class="statistique">
+
+		</div>
 	</div>
 
 	<div class="right">
+		<div class="search-summoner">
+
+      </div>
+
+
 		<div class="history-container">
 			<a class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of games">
 				<div class="match-info">
