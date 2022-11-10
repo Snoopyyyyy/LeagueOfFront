@@ -198,6 +198,7 @@
   flex-direction: column;
   justify-content: center;
   background-color: var(--item-bg);
+  border-radius: 5px;
 }
 
 .players > div {
@@ -215,7 +216,7 @@
   aspect-ratio: 1 / 1;
 }
 
-@media (max-width: 800px) {
+@media (max-width: 767px) {
   .players-in-game {
     display: none;
   }
