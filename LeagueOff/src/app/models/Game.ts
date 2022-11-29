@@ -50,8 +50,8 @@ export class Game {
 		let drakes: any[] = [];
 
 		// set up team
-		this.blueTeam = new Team(100, "blue");
-		this.redTeam = new Team(200, "red");
+		this.blueTeam = new Team(100, "#5281d7");
+		this.redTeam = new Team(200, "#cf3a3e");
 
 		for (const ply of game.players!) {
 			if (ply.teamId == 100) {

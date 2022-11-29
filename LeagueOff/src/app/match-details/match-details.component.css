@@ -6,18 +6,26 @@
 	width: 100%;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
+	background-color: #101812;
+	border: 2px;
+	border-color: #31313c;
 }
 
+html, body {
+	background-color: #101010;
+}
+  
 .setting {
 	padding: 0 10px 10px 10px;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	background-color: #31313c;
 }
 
 .map-container {
-	width: 70%;
+	width: 100%;
 	padding: 0;
 	border: 2px solid black;
 	border-radius: 10px;
@@ -67,13 +75,29 @@
 	justify-content: center;
 	align-items: center;
 	padding: 2px;
-	background: lightgrey;
+	background: #0b5ed7;
 	border: 2px solid;
+	border-radius: 10px;
+	border-color: #073c8a;
+	margin-top: 5%;
+}
+
+.time {
+	margin-top: 5%;
+	color: white;
+	font-weight: 500;
+}
+
+.btn-outline-secondary{
+	margin-top: 5%;
+	background-color: white;
+	color : #0b5ed7;
+	font-weight: 700;
 }
 
 .popup > img {
 	border-radius: 50%;
-	border: 2px solid #111111;
+	border: 2px solid #073c8a;
 	height: 30px;
 	margin-inline: 5px;
 	aspect-ratio: 1 / 1;
@@ -103,9 +127,6 @@
 
 
 .scoreboard {
-	border-top: 2px solid black;
-	border-bottom-right-radius: 10px;
-	border-bottom-left-radius: 10px;
 	width: 100%;
 	border-radius: 10px;
 }
@@ -120,7 +141,6 @@
 	align-items: center;
 	width: 100%;
 	height: 40px;
-	border-bottom: 2px solid black;
 }
 
 .score > img {
@@ -165,7 +185,7 @@
   }
 
   .left{
-    width: 66%;
+    width: 50%;
     height: 100%;
     display: flex;
     flex-direction: column ;
@@ -175,18 +195,31 @@
   }
 
 	.right {
-		width: 33%;
+		width: 46%;
 		height: 100%;
 		display: flex;
 		flex-direction: column ;
 		justify-content: center;
 		gap: 10px;
-		background-color: blue;
+	  }
+
+	  .gameinfo{
+		background-color: #31313c;
+		border-radius: 5px;
+		padding: 15px;
+		height: 100%;
+	  }
+
+	  .logs {
+		background-color: #31313c;
+		border-radius: 5px;
+		padding: 15px;
+		height: 100%;
 	  }
 
 	  .container {
 		margin: auto;
-		  padding: 100px 10px 50px 10px;
+		  padding: 40px 10px 40px 10px;
 		  justify-content: space-between;
 		  display: flex;
 	  }
@@ -204,3 +237,186 @@
 			flex-direction: column-reverse;
 		}
 	}
+
+
+input[type=range] {
+  height: 38px;
+  -webkit-appearance: none;
+  margin: 10px 0;
+  width: 100%;
+  background-color: #31313c;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #3071A9;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+input[type=range]::-webkit-slider-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -11px;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #3071A9;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  box-shadow: 1px 1px 1px #000000;
+  background: #3071A9;
+  border-radius: 5px;
+  border: 1px solid #000000;
+}
+input[type=range]::-moz-range-thumb {
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 10px;
+  cursor: pointer;
+  animate: 0.2s;
+  background: transparent;
+  border-color: transparent;
+  color: transparent;
+}
+input[type=range]::-ms-fill-lower {
+  background: #3071A9;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071A9;
+  border: 1px solid #000000;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px #000000;
+}
+input[type=range]::-ms-thumb {
+  margin-top: 1px;
+  box-shadow: 1px 1px 1px #000000;
+  border: 1px solid #000000;
+  height: 30px;
+  width: 15px;
+  border-radius: 5px;
+  background: #FFFFFF;
+  cursor: pointer;
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071A9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #3071A9;
+}
+
+input[type=range] {
+	height: 34px;
+	-webkit-appearance: none;
+	margin: 10px 0;
+	width: 100%;
+  }
+  input[type=range]:focus {
+	outline: none;
+  }
+  input[type=range]::-webkit-slider-runnable-track {
+	width: 100%;
+	height: 12px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 1px 1px 1px #002200;
+	background: #006da7;
+	border-radius: 1px;
+	border: 1px solid #00AEF7;
+  }
+  input[type=range]::-webkit-slider-thumb {
+	box-shadow: 3px 3px 3px #00BFFC;
+	border: 2px solid #07E0FF;
+	height: 23px;
+	width: 23px;
+	border-radius: 23px;
+	background: #00A0F4;
+	cursor: pointer;
+	-webkit-appearance: none;
+	margin-top: -7px;
+  }
+  input[type=range]:focus::-webkit-slider-runnable-track {
+	background: #006da7;
+  }
+  input[type=range]::-moz-range-track {
+	width: 100%;
+	height: 12px;
+	cursor: pointer;
+	animate: 0.2s;
+	box-shadow: 1px 1px 1px #002200;
+	background: #006da7;
+	border-radius: 1px;
+	border: 1px solid #00AEF7;
+  }
+  input[type=range]::-moz-range-thumb {
+	box-shadow: 3px 3px 3px #00BFFC;
+	border: 2px solid #07E0FF;
+	height: 23px;
+	width: 23px;
+	border-radius: 23px;
+	background: #00A0F4;
+	cursor: pointer;
+  }
+  input[type=range]::-ms-track {
+	width: 100%;
+	height: 12px;
+	cursor: pointer;
+	animate: 0.2s;
+	background: transparent;
+	border-color: transparent;
+	color: transparent;
+  }
+  input[type=range]::-ms-fill-lower {
+	background: #006da7;
+	border: 1px solid #00AEF7;
+	border-radius: 2px;
+	box-shadow: 1px 1px 1px #002200;
+  }
+  input[type=range]::-ms-fill-upper {
+	background: #006da7;
+	border: 1px solid #00AEF7;
+	border-radius: 2px;
+	box-shadow: 1px 1px 1px #002200;
+  }
+  input[type=range]::-ms-thumb {
+	margin-top: 1px;
+	box-shadow: 3px 3px 3px #00BFFC;
+	border: 2px solid #07E0FF;
+	height: 23px;
+	width: 23px;
+	border-radius: 23px;
+	background: #00A0F4;
+	cursor: pointer;
+  }
+  input[type=range]:focus::-ms-fill-lower {
+	background: #006da7;
+  }
+  input[type=range]:focus::-ms-fill-upper {
+	background: #006da7;
+  }
+  

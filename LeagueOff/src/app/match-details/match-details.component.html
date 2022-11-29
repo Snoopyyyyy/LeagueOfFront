@@ -1,3 +1,5 @@
+<link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
+
 <div class="bg">
 	<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
 	<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
@@ -53,56 +55,64 @@
 						<img src="{{Fixdata.getChampionIcon(game.getPlayer(selectedEvent.victimId).championName!)}}"/>
 						<p>{{Fixdata.getTime(selectedEvent.timestamp).join(':')}}</p>
 					</div>
-					<span class="">{{Fixdata.getTime(this.range).join(':')}}</span>
+					<span class="time">{{Fixdata.getTime(this.range).join(':')}}</span>
 				</div>
 				<input type="range" [max]="game ? game.duration*1000 : 0" [(ngModel)]="range" class="w-100"/>
 				<div class="button">
-					<button class="btn btn-primary w-25" (click)="setRange(-(10000/speed))">Back</button>
+					<button class="btn btn-primary w-25" (click)="setRange(-(10000/speed))"><i class="fa fa-arrow-left"></i></button>
 					<button class="btn btn-primary w-25" (click)="togglePlayPause()"
 							[ngStyle]="{'background' : playing ? 'green' : ''}">{{playing ? "pause" : "play"}}</button>
-					<button class="btn btn-primary w-25" (click)="setRange(10000/speed)">next</button>
+					<button class="btn btn-primary w-25" (click)="setRange(10000/speed)"><i class="fa fa-arrow-right"></i></button>
 				</div>
 			</div>
 
 		</div>
 	</div>
 				<div class="right">
-					<div class="scoreboard">
-						<div class="score">
-							<div *ngIf="game" class="teamScore px-2 flex-row-reverse" [ngStyle]="{'color':game.blueTeam.color}">
-								<span>{{getTeamKill(100)}}</span>
-								<div class="d-flex h-100 align-items-center">
-									<span class="pe-1">0</span>
-									<img src="assets/img/gold_score.png" class="score-icon" alt="Gold"/>
+					<div class="gameinfo">
+						<div class="scoreboard">
+							<div class="score">
+								<div *ngIf="game" class="teamScore px-2 flex-row-reverse" [ngStyle]="{'color':game.blueTeam.color}">
+									<span>{{getTeamKill(100)}}</span>
+									<div class="d-flex h-100 align-items-center">
+										<span class="pe-1">0</span>
+										<img src="assets/img/gold_score.png" class="score-icon" alt="Gold"/>
+									</div>
+									<div class="d-flex h-100 align-items-center">
+										<span class="pe-1">0</span>
+										<img src="assets/img/tower_score.png" class="score-icon" alt="Tower"/>
+									</div>
 								</div>
-								<div class="d-flex h-100 align-items-center">
-									<span class="pe-1">0</span>
-									<img src="assets/img/tower_score.png" class="score-icon" alt="Tower"/>
+								<img src="assets/img/kill_score.png">
+								<div *ngIf="game" class="teamScore px-2" [ngStyle]="{'color':game.redTeam.color}">
+									<span>{{getTeamKill(200)}}</span>
+									<div class="d-flex h-100 align-items-center">
+										<img src="assets/img/gold_score.png" class="score-icon" alt="Gold"/>
+										<span class="ps-1">0</span>
+									</div>
+									<div class="d-flex h-100 align-items-center">
+										<img src="assets/img/tower_score.png" class="score-icon" alt="Tower"/>
+										<span class="ps-1">0</span>
+									</div>
 								</div>
 							</div>
-							<img src="assets/img/kill_score.png">
-							<div *ngIf="game" class="teamScore px-2" [ngStyle]="{'color':game.redTeam.color}">
-								<span>{{getTeamKill(200)}}</span>
-								<div class="d-flex h-100 align-items-center">
-									<img src="assets/img/gold_score.png" class="score-icon" alt="Gold"/>
-									<span class="ps-1">0</span>
-								</div>
-								<div class="d-flex h-100 align-items-center">
-									<img src="assets/img/tower_score.png" class="score-icon" alt="Tower"/>
-									<span class="ps-1">0</span>
-								</div>
+			
+						</div>
+						
+						<div class="playerScore d-flex ps-2 pe-2 border" *ngFor="let post of posts">
+							<div *ngFor="let team of game?.getTeams()" [ngClass]="team.id == 100 ? 'flex-row-reverse' : ''" class="col h-100 d-flex justify-content-between" [ngStyle]="{'color': team.color}"  >
+								<img src="{{Fixdata.getChampionIcon(team.getPlayerAt(game.gameMode != 'ARAM' ? post : posts.indexOf(post) + (team.id == 100 ? 1 : 6)).championName!)}}" height="100%"/>
+								<span class="kda-{{team.id}}" style="width: 25%">{{getKDA(team.getPlayerAt(game.gameMode != 'ARAM' ? post : posts.indexOf(post) + (team.id == 100 ? 1 : 6)).participantId!)}}</span>
+								<span>{{getWard(team.getPlayerAt(game.gameMode != 'ARAM' ? post : posts.indexOf(post) + (team.id == 100 ? 1 : 6)).participantId!)}}</span>
 							</div>
 						</div>
-		
 					</div>
-					
-					<div class="playerScore d-flex ps-2 pe-2 border" *ngFor="let post of posts">
-						<div *ngFor="let team of game?.getTeams()" [ngClass]="team.id == 100 ? 'flex-row-reverse' : ''" class="col h-100 d-flex justify-content-between" [ngStyle]="{'color': team.color}"  >
-							<img src="{{Fixdata.getChampionIcon(team.getPlayerAt(game.gameMode != 'ARAM' ? post : posts.indexOf(post) + (team.id == 100 ? 1 : 6)).championName!)}}" height="100%"/>
-							<span class="kda-{{team.id}}" style="width: 25%">{{getKDA(team.getPlayerAt(game.gameMode != 'ARAM' ? post : posts.indexOf(post) + (team.id == 100 ? 1 : 6)).participantId!)}}</span>
-							<span>{{getWard(team.getPlayerAt(game.gameMode != 'ARAM' ? post : posts.indexOf(post) + (team.id == 100 ? 1 : 6)).participantId!)}}</span>
-						</div>
+
+					<div class="logs">
+
+						
 					</div>
+
 				</div>
 </div>
 </section>
