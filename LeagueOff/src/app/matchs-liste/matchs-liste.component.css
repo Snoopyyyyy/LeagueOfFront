@@ -52,7 +52,7 @@
 
 .stat-data {
   width: 100%;
-  height: 100%;
+  min-height: calc(100% - 48px);
   background-color: #31313c;
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
@@ -97,14 +97,21 @@
   background-color: #31313c;
   border-bottom: 0;
   font-family: "InterBold";
+  text-decoration: underline;
 }
 
 .winrate {
   width: 100%;
-  height: 10%;
+  height: 13%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+}
+
+.winrate-bar {
+  display: flex;
+  width: 100%;
+  height: 100%;
   align-items: center;
   border-radius: 5px;
   padding: 10px;
@@ -112,11 +119,14 @@
 }
 
 .wr-win {
+  display: flex;
   border-top-left-radius: 5px;
   border-bottom-left-radius: 5px;
   background: #28344e;
+  align-items: center;
   padding: 5px 10px;
 	color: #5383da;
+  min-height: 100%;
 }
 
 .wr-loose {
@@ -125,11 +135,12 @@
   display: flex;
   flex-direction: row;
   justify-content: end;
+  align-items: center;
   padding: 5px 10px;
 	background: #59343b;
 	color: #e43a3f;
+  height: 100%;
 }
-
 
 .container {
   margin: auto;
@@ -350,6 +361,106 @@
   height: 100%;
   aspect-ratio: 1 / 1;
 }
+
+.ply-link {
+  color: #bcc4cc;
+}
+
+.ply-link:hover {
+  text-decoration: underline;
+}
+
+.stat-title {
+  padding-left: 10px;
+}
+
+.champs-stat {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 87%;
+}
+
+.champ-list {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.champ-state {
+  width: 100%;
+  min-height: fit-content;
+  display: flex;
+  flex-direction: row;
+  padding-bottom: 5px;
+  border-bottom: 2px solid #101010;
+}
+
+.stat-icon {
+  width: 10%;
+  margin-right: 10px;
+}
+
+.stat-icon > img {
+  width: 100%;
+}
+
+.stat-text {
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-text > div {
+  width: 30%;
+}
+
+.champ-winrate {
+  text-align: right;  
+}
+
+.champ-kda {
+  text-align: center;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  width: 0px;
+  height: 0px;
+}
+::-webkit-scrollbar-thumb {
+  background: #646464;
+  border: 0px none #ffffff;
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #737373;
+}
+::-webkit-scrollbar-thumb:active {
+  background: #646464;
+}
+::-webkit-scrollbar-track {
+  background: #ff000000;
+  border: 0px none #ffffff;
+  border-radius: 100px;
+}
+::-webkit-scrollbar-track:hover {
+  background: #ff000000;
+}
+::-webkit-scrollbar-track:active {
+  background: #d6000000;
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 
 @media (max-width: 767px) {
   .players-in-game {

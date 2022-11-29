@@ -20,6 +20,7 @@ export class Game {
 	date!: Date;
 	duration!: number;
 	gameMode!: string;
+	gameType!: string;
 	players!: Player[];
 	events: any[];
 
