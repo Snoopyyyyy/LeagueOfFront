@@ -7,8 +7,8 @@ import {HomePageComponent} from './home-page/home-page.component';
 import {MatchsListeComponent} from './matchs-liste/matchs-liste.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { SortByDatePipe } from './sort-by-date.pipe';
-import { SortByMostPlayedPipe } from './sort-by-most-played.pipe';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { SortByMostPlayedPipe } from './pipes/sort-by-most-played.pipe';
 
 @NgModule({
 	declarations: [

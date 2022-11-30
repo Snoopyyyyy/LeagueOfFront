@@ -5,7 +5,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class SortByMostPlayedPipe implements PipeTransform {
 
-  transform(value: any[]): any[] {
+  transform(value: any[] | undefined): any[] {
+    value = value ?? [];
     return value.sort((a: any, b: any) => {
       return b.value.nb_game - a.value.nb_game;
     });

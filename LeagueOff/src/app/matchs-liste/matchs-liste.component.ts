@@ -51,7 +51,9 @@ export class MatchsListeComponent implements OnInit {
 		if (this.region != "" && this.summonerName != "") {
 			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
 				if (summoner.puuid != "") {
-					this.router.navigate([`/game/${summoner.name}/${summoner.puuid}`]);
+					this.router.navigate([`/game/${summoner.name}/history`]).then(() => {
+						this.ngOnInit();
+					 });
 				} else {
 					this.error = "No summoner found"
 				}
