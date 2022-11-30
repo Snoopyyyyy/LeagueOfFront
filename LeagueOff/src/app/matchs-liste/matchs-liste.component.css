@@ -1089,10 +1089,28 @@ color: #999;
   padding: 6px 12px;
   border-radius: 0.375rem
 }
+@media (max-width:950px){
+  .statistique{
+    display: none;
+  }
 
+  .summoner{
+    height: 20%;
+  }
+
+  .history-match{
+    height: 100px;
+    min-height: 100px;
+  }
+
+  .left{
+
+    justify-content: start;
+  }
+}
 @media (max-width:1300px){
   section {
-      flex-direction: column-reverse;
+      flex-direction: column;
   }
 
   .right {
@@ -1114,6 +1132,9 @@ color: #999;
 
   .icon-box{
       text-align: left;
+  }
+  .bg-icon{
+    display: none;
   }
 
   .left .bg{
