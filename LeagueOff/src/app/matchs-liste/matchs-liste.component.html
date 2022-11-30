@@ -68,7 +68,7 @@
 
 
 		<div class="history-container">
-			<a class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of this.showGames | sortByDate">
+			<a href="" class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of this.showGames | sortByDate">
 				<div class="match-info">
 					<h5>{{game.gameMode === "CLASSIC" ? game.gameType : game.gameMode}}</h5>
 					<span>{{getDate(game.date)}}</span>

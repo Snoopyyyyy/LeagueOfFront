@@ -6,7 +6,7 @@ import {MatchsListeComponent} from './matchs-liste/matchs-liste.component';
 
 const routes: Routes = [
 	{path: '', component: HomePageComponent},
-	{path: 'game/:name', component: MatchsListeComponent},
+	{path: 'game/:name/history', component: MatchsListeComponent},
 	{path: 'vue-content', component: VueContentComponent},
 ];
 
