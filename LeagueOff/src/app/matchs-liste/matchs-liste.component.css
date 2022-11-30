@@ -383,7 +383,7 @@
 
 .champ-list {
   width: 100%;
-  height: 100%;
+  min-height: 85%;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -468,8 +468,14 @@
   }
 
   .match-info {
-    width: 100%;
+    width: 25%;
   }
+
+  .history-match {
+    justify-content: space-evenly;
+  }
+
+
 }
 
 
@@ -852,6 +858,7 @@ li {
 }
 
 *{
+  z-index: 5;
   padding: 0;
   margin : 0;
   list-style: none;
@@ -876,6 +883,7 @@ section{
   position: absolute;
   top : 0;
   right : 0;
+  z-index: 0;
 }
 
 .bg-icon:first-child {
@@ -1052,17 +1060,26 @@ color: #495057;
 color: #999;
 }
 
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100%;
+  padding: 20px;
+}
+
 .details{
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding: 5%;
+  margin: 0;
 }
 
 .details select{
   width: 35%;
   background-color: #1c1c1f;
+  margin: 0px;
   color : white;
 }
 
@@ -1095,7 +1112,7 @@ color: #999;
   }
 
   .summoner{
-    height: 20%;
+    height: 100%;
   }
 
   .history-match{
@@ -1104,23 +1121,37 @@ color: #999;
   }
 
   .left{
-
+    height: 100px;
     justify-content: start;
   }
+
+  .right {
+    margin-top: px !important;
+  }
 }
+
 @media (max-width:1300px){
   section {
       flex-direction: column;
   }
 
+  .statistique{
+    display: none;
+  }
+
   .right {
       width: 100%;
       padding-left: 0px;
-      margin-top: 80px;
   }
 
   .left {
       width: 100%;
+      height: 120px;
+      margin-bottom: 10px;
+  }
+
+  .search-summoner {
+    min-height: 84px;
   }
 
   .box-up{
@@ -1133,9 +1164,7 @@ color: #999;
   .icon-box{
       text-align: left;
   }
-  .bg-icon{
-    display: none;
-  }
+
 
   .left .bg{
       /* background-image: url(/assets/img/bg-left-rotate.png); */
@@ -1191,6 +1220,11 @@ color: #999;
   }
   .trait{
       width: 50%;
+  }
+
+  
+  .bg-icon{
+    display: none;
   }
 }
 

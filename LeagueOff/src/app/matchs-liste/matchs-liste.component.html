@@ -63,38 +63,34 @@
 
 	<div class="right">
 		<div class="search-summoner">
+			<form (ngSubmit)="submit()">
+				<div class="details">
+					<select class="form-select form-select-lg option"
+							[ngStyle]="{'color': !region ? '#ffffff' : '#ffffff'}"
+							aria-label=".form-select-lg example" name="region" [(ngModel)]="region">
+						<option disabled selected value="">Sélectionner le server</option>
+						<option value="EUW1">EUW1</option>
+						<option value="EUN1">EUN1</option>
+						<option value="JP1">JP1</option>
+						<option value="KR">KR</option>
+						<option value="LA1">LA1</option>
+						<option value="LA2">LA2</option>
+						<option value="NA1">NA1</option>
+						<option value="OC1">OC1</option>
+						<option value="TR1">TR1</option>
+						<option value="RU">RU</option>
+					</select>
 
-				<form (ngSubmit)="submit()">
-					<div class="details">
-						<select class="form-select form-select-lg mb-3 option"
-								[ngStyle]="{'color': !region ? '#ffffff' : '#ffffff'}"
-								aria-label=".form-select-lg example" name="region" [(ngModel)]="region">
-							<option disabled selected value="">Sélectionner le server</option>
-							<option value="EUW1">EUW1</option>
-							<option value="EUN1">EUN1</option>
-							<option value="JP1">JP1</option>
-							<option value="KR">KR</option>
-							<option value="LA1">LA1</option>
-							<option value="LA2">LA2</option>
-							<option value="NA1">NA1</option>
-							<option value="OC1">OC1</option>
-							<option value="TR1">TR1</option>
-							<option value="RU">RU</option>
-						</select>
-
-						<div class="input-group mobile_search mb-3 searchsummoner">
-							<input type="text" class="form-control searchsummonerinput" placeholder="Summoner"
-								[(ngModel)]="summonerName" name="summonerName">
-							<div class="input-group-append">
-								<button class="btn btn-gradient" type="submit">Go</button>
-							</div>
+					<div class="input-group mobile_search searchsummoner">
+						<input type="text" class="form-control searchsummonerinput" placeholder="Summoner"
+							[(ngModel)]="summonerName" name="summonerName">
+						<div class="input-group-append">
+							<button class="btn btn-gradient" type="submit">Go</button>
 						</div>
 					</div>
-				</form>
-
+				</div>
 				<span class="text-error">{{error}}</span>
-
-
+			</form>
      	</div>
 
 
@@ -144,7 +140,7 @@
 					<div class="players" *ngFor="let team of game.getTeams()">
 						<div *ngFor="let ply of getPlayersFromTeam(team)">
 							<img src="{{Fixdata.getChampionIcon(ply.championName!)}}" alt="{{ply.championName}}" />											
-							<a class="ply-link" href="/game/{{ply.summonerName}}">{{ply.summonerName}}</a>
+							<a class="ply-link" href="/game/{{ply.summonerName}}/history">{{ply.summonerName}}</a>
 						</div>
 					</div>
 				</div>

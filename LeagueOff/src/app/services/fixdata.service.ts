@@ -41,7 +41,7 @@ export class FixdataService {
 		return "https://ddragon.leagueoflegends.com/cdn/"+this.version+"/img/champion/"+(championName === "FiddleSticks" ? "Fiddlesticks" : championName) +".png";
 	}
 
-	getSummonerIcon(iconId: number | undefined = 0): string {
+	getSummonerIcon(iconId: number | null = 0): string {
 		return "http://ddragon.leagueoflegends.com/cdn/" + this.version + "/img/profileicon/" + iconId + ".png";
 	}
 
