@@ -14,6 +14,10 @@ html, body, app-root, drop-down-server, search-input, app-match-details {
 	width: 100%;
 }
 
+app-match-details {
+	background-color: #101010;
+}
+
 .w-90 {
 	width: 90%;
 }

@@ -90,6 +90,14 @@ export class MatchDetailsComponent implements OnInit {
 			}, 1);
 		}
 	}
+	getBuildingIcon(buildingType: string): string {
+		const icon: any = {
+			"TOWER_BUILDING": "icon_ui_tower_minimap.png",
+			"INHIBITOR_BUILDING": "icon_ui_inhibitor_minimap_v2.png",
+			"NEXUS": "icon_ui_nexus_minimap_v2.png"
+		};
+		return "https://raw.communitydragon.org/latest/game/assets/ux/minimap/icons/" + icon[buildingType];
+	}
 
 	getObjectiveIcon(objectif: string): string {
 		const icon: any = {
@@ -100,9 +108,10 @@ export class MatchDetailsComponent implements OnInit {
 			"EARTH_DRAGON": "dragonearthminimap.png",
 			"WATER_DRAGON": "dragonwaterminimap.png",
 			"HEXTECH_DRAGON": "dragonhextechminimap.png",
+			"CHEMTECH_DRAGON": "dragonchemtechmini.png",
 			"ELDER_DRAGON": "dragonelderminimap.png"
 		};
-		return "https://raw.communitydragon.org/12.18/game/assets/ux/minimap/icons/" + icon[objectif];
+		return "https://raw.communitydragon.org/latest/game/assets/ux/minimap/icons/" + icon[objectif];
 	}
 
 	nextSpeed() {
@@ -151,6 +160,11 @@ export class MatchDetailsComponent implements OnInit {
 		let assists = rawAssist.length;
 
 		return `${kills}/${deaths}/${assists}`;
+	}
+
+	getTeamTower(teamId: number): number {
+		let towers = document.querySelectorAll(".team-"+teamId+".visible-true.type-TOWER_BUILDING");
+		return towers.length;
 	}
 
 	getWard(participantId: number): string {

@@ -7,15 +7,13 @@ import {MatchsListeComponent} from './matchs-liste/matchs-liste.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { MatchDetailsComponent } from './match-details/match-details.component';
-import { MapIconComponent } from './map-icon/map-icon.component';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomePageComponent,
 		MatchsListeComponent,
-  MatchDetailsComponent,
-  MapIconComponent,
+  		MatchDetailsComponent,
 	],
 	imports: [
 		BrowserModule,
