@@ -1032,6 +1032,9 @@ section{
 
   background: linear-gradient(45deg, #3385ad, #251aad);
   border-width: 0;
+  height: 35px;
+  padding: 30%;
+  color : white;
 }
 
 .option {
@@ -1049,6 +1052,43 @@ color: #495057;
 color: #999;
 }
 
+.details{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5%;
+}
+
+.details select{
+  width: 35%;
+  background-color: #1c1c1f;
+  color : white;
+}
+
+.details .searchsummoner{
+  width: 60%;
+
+}
+
+.searchsummonerinput{
+  background-color: #1c1c1f;
+  height: 35px;
+  padding: 2%;
+  color : white;
+
+}
+
+.searchsummonerinput::placeholder{
+  color : white;
+}
+
+.search-summoner{
+  font-family: "InterBold", sans-serif;
+  font-size: 1rem;
+  padding: 6px 12px;
+  border-radius: 0.375rem
+}
 
 @media (max-width:1300px){
   section {
