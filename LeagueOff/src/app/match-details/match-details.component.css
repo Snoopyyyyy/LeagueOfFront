@@ -439,4 +439,8 @@ input[type=range] {
 	.left{
 		width: 90%;
 	}
+
+	.bg-icon{
+		display: none;
+	}
 }
