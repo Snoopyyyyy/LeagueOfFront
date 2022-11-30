@@ -5,12 +5,101 @@
 
 <section class="container">
 	<div class="left">
+		<div class="summoner">
+			<img src="{{Fixdata.getSummonerIcon(summoner?.profileIconId)}}" />
+			<div>
+				<h2>{{summoner?.name}}</h2>
+				<span>Niveau: <strong>{{summoner?.summonerLevel}}</strong></span>
+			</div>
+		</div>
 
+		<div class="statistique">
+			<div class="filter">
+				<a class="btn-filtre" [ngClass]="{'select': this.gameModeFilter === ''}" (click)="this.changeFilter('')">TOUS</a>
+				<a class="btn-filtre" [ngClass]="{'select': this.gameModeFilter === 'ARAM'}" (click)="this.changeFilter('ARAM')">ARAM</a>
+				<a class="btn-filtre" [ngClass]="{'select': this.gameModeFilter === 'CLASSIC'}" (click)="this.changeFilter('CLASSIC')">CLASSIC</a>
+			</div>
+
+			<div class="stat-data">
+				<div class="winrate">
+					<h5 class="stat-title">Winrate</h5>
+					<div class="winrate-bar">
+						<div *ngIf="getPourCent(this.statistique?.win?.length)" class="wr-win" [ngStyle]="{'width': getPourCent(this.statistique?.win?.length)+'%'}">{{getPourCent(this.statistique?.win?.length)}}% ({{statistique?.win?.length}})</div>
+						<div *ngIf="getPourCent(this.statistique?.loose?.length)" class="wr-loose" [ngStyle]="{'width': getPourCent(this.statistique?.loose?.length)+'%'}">({{statistique?.loose?.length}}) {{getPourCent(this.statistique?.loose?.length)}}%</div>
+					</div>
+				</div>
+
+				<div class="champs-stat">
+					<h5 class="stat-title">Moyen Champions</h5>
+					<div class="champ-list">
+						<div *ngFor="let champ of this.statistique?.champs | keyvalue: onCompare | sortByMostPlayed" class="champ-state">
+							<div class="stat-icon">
+								<img src="{{Fixdata.getChampionIcon(champ.key)}}" alt="{{champ.key}}" />
+							</div>
+							
+							<div class="stat-text">
+								<div>
+									<h6>{{champ.key}}</h6>
+									<small>{{champ.value.cs}} cs</small>
+								</div>
+							
+								<div class="champ-kda">
+									<h6>{{champ.value.kda}} KDA</h6>
+									<small>{{champ.value.kill}} / {{champ.value.deaths}} / {{champ.value.assists}}</small>
+								</div>
+							
+			
+								<div class="champ-winrate">
+									<h6>{{champ.value.win}}%</h6>
+									<small>{{champ.value.nb_game}} jouée{{champ.value.nb_game > 1 ? "s" : ""}}</small>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 
 	<div class="right">
+		<div class="search-summoner">
+
+				<form (ngSubmit)="submit()">
+					<div class="details">
+						<select class="form-select form-select-lg mb-3 option"
+								[ngStyle]="{'color': !region ? '#ffffff' : '#ffffff'}"
+								aria-label=".form-select-lg example" name="region" [(ngModel)]="region">
+							<option disabled selected value="">Sélectionner le server</option>
+							<option value="EUW1">EUW1</option>
+							<option value="EUN1">EUN1</option>
+							<option value="JP1">JP1</option>
+							<option value="KR">KR</option>
+							<option value="LA1">LA1</option>
+							<option value="LA2">LA2</option>
+							<option value="NA1">NA1</option>
+							<option value="OC1">OC1</option>
+							<option value="TR1">TR1</option>
+							<option value="RU">RU</option>
+						</select>
+
+						<div class="input-group mobile_search mb-3 searchsummoner">
+							<input type="text" class="form-control searchsummonerinput" placeholder="Summoner"
+								[(ngModel)]="summonerName" name="summonerName">
+							<div class="input-group-append">
+								<button class="btn btn-gradient" type="submit">Go</button>
+							</div>
+						</div>
+					</div>
+				</form>
+
+				<span class="text-error">{{error}}</span>
+
+
+     	</div>
+
+
 		<div class="history-container">
-			<a class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of games">
+			<a href="" class="history-match win {{game.currentPlayer.win ? 'win' : 'loose'}}" *ngFor="let game of this.showGames | sortByDate">
 				<div class="match-info">
 					<h5>{{game.gameMode}}</h5>
 					<span>{{getDate(game.date)}}</span>
@@ -46,7 +135,7 @@
 
 					<div class="player-items">
 						<div *ngFor="let item_slot of [0,1,2,3,4,5,6]" class="{{item_slot == 6 ? 'ward-slot': ''}}">
-							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" style="visibility: {{!getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}}" />
+							<img src="{{Fixdata.getItemIcon(getItem(game.currentPlayer, item_slot))}}" alt="Item {{item_slot}}" [ngStyle]="{'visibility': !getItem(game.currentPlayer, item_slot) ? 'hidden': 'visible'}" />
 						</div>
 					</div>
 				</div>
@@ -55,197 +144,11 @@
 					<div class="players" *ngFor="let team of game.getTeams()">
 						<div *ngFor="let ply of getPlayersFromTeam(team)">
 							<img src="{{Fixdata.getChampionIcon(ply.championName!)}}" alt="{{ply.championName}}" />											
-							{{ply.summonerName}}
+							<a class="ply-link" href="/game/{{ply.summonerName}}">{{ply.summonerName}}</a>
 						</div>
 					</div>
 				</div>
 			</a>
 		</div>
 	</div>
-
-	<!--
-	<div class="right">
-		<div class="">
-			<div class="principalcontainer">
-				<a *ngFor="let game of games" class="navbar-brand">
-
-					<li class="css-1qq23jn">
-						<div class="css">
-							<div class="game">
-								<div class="type">{{game.gameMode!}}</div>
-								<div class="time-stamp">
-									<div style="position: relative;" class="">{{game.date!}}</div>
-								</div>
-								<div class="bar"></div>
-								<div class="length">{{game.duration!}}</div>
-							</div>
-							<div class="info">
-								<div>
-									<div class="champion">
-										<div class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="champ logo" class="champ-icon">
-											<span class="champion-level">18</span>
-										</div>
-										<div class="spells">
-											<div class="spell">
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner1!)}}"
-														alt="Spell1" width="22" height="22"></div>
-											</div>
-											<div class="spell">
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getSummonerSpellIcon(game.currentPlayer.Summoner2!)}}"
-														alt="Spell2" width="22" height="22"></div>
-											</div>
-										</div>
-										<div class="runes">
-											<div class="rune">
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getRuneIcon(game.currentPlayer.FirstRune!)}}"
-														alt="Rune1" alt="Rune1" width="22" height="22"></div>
-											</div>
-											<div class="rune">
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getRuneIcon(game.currentPlayer.SecondRune!)}}"
-														alt="Rune1" alt="Rune2" width="22" height="22"></div>
-											</div>
-										</div>
-									</div>
-
-									<div class="stats">
-										<div class="p-kill">
-											<div style="position: relative;" class="">C/Tués %</div>
-										</div>
-										<div class="cs">
-											<div style="position: relative;" class="">CS {{game.currentPlayer.cs!}}
-											</div>
-										</div>
-									</div>
-									<div class="kda">
-										<div class="k-d-a"><span>{{game.currentPlayer.kills!}}</span> / <span
-												class="d">{{game.currentPlayer.deaths!}}</span> /
-											<span>{{game.currentPlayer.assists!}}</span></div>
-										<div class="ratio"><span>
-													{{Fixdata.getKDA(game.currentPlayer.KDA!)}} 0.231
-												</span></div>
-									</div>
-								</div>
-								<div>
-									<div class="items">
-										<ul>
-											<li>
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getItemIcon(game.currentPlayer.item0!)}}"
-														alt="Item1" width="22" height="22"></div>
-											</li>
-											<li>
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getItemIcon(game.currentPlayer.item1!)}}"
-														alt="Item2" width="22" height="22"></div>
-											</li>
-											<li>
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getItemIcon(game.currentPlayer.item2!)}}"
-														alt="Item3" width="22" height="22"></div>
-											</li>
-											<li>
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getItemIcon(game.currentPlayer.item3!)}}"
-														alt="Item4" width="22" height="22"></div>
-											</li>
-											<li>
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getItemIcon(game.currentPlayer.item4!)}}"
-														alt="Item5" width="22" height="22"></div>
-											</li>
-											<li>
-												<div style="position: relative;" class=""><img
-														src="{{Fixdata.getItemIcon(game.currentPlayer.item5!)}}"
-														alt="Item6" width="22" height="22"></div>
-											</li>
-										</ul>
-										<div class="ward">
-											<div style="position: relative;" class=""><img
-													src="{{Fixdata.getItemIcon(game.currentPlayer.item6!)}}"
-													alt="Brouilleur oraculaire" width="22" height="22"></div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<div class="participants">
-								<ul>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">KZXJhasne</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">Nerxise
-										</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">Peau2Crocodile</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">mik4sPT</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">T1 Yoyo</div>
-									</li>
-								</ul>
-								<ul>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">AzazelXIII</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">Snoopÿ</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">James Bombb</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">TheMin3Pedr0</div>
-									</li>
-									<li class="css-particip e1iiyghw1">
-										<div style="position: relative;" class="icon"><img
-												src="{{Fixdata.getChampionIcon(game.currentPlayer.championName!)}}"
-												alt="Champion" width="16" height="16"></div>
-										<div class="name">A rat is a rat</div>
-									</li>
-								</ul>
-							</div>
-
-						</div>
-					</li>
-				</a>
-			</div>
-		</div>
-	</div>
-	-->
 </section>
