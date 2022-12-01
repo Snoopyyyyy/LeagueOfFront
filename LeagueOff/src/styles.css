@@ -40,3 +40,39 @@ app-match-details {
 	justify-content: center;
 	align-items: center;
 }
+
+
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+ }
+ ::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+ }
+ ::-webkit-scrollbar-thumb {
+	background: #646464;
+	border: 0px none #ffffff;
+	border-radius: 50px;
+ }
+ ::-webkit-scrollbar-thumb:hover {
+	background: #737373;
+ }
+ ::-webkit-scrollbar-thumb:active {
+	background: #646464;
+ }
+ ::-webkit-scrollbar-track {
+	background: #ff000000;
+	border: 0px none #ffffff;
+	border-radius: 100px;
+ }
+ ::-webkit-scrollbar-track:hover {
+	background: #ff000000;
+ }
+ ::-webkit-scrollbar-track:active {
+	background: #d6000000;
+ }
+ ::-webkit-scrollbar-corner {
+	background: transparent;
+ }
