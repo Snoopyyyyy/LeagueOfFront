@@ -1,9 +1,13 @@
+import { Player } from "./Player";
+import { Team } from "./Team";
+
 export enum POST {
 	'TOP' = 'TOP',
 	'JUNGLE' = 'JUNGLE',
 	'MIDDLE' = 'MIDDLE',
 	'BOTTOM' = 'BOTTOM',
 	'UTILITY' = 'UTILITY',
+}
 
 export class Game {
 	// raw
@@ -52,9 +56,9 @@ export class Game {
 
 		// set up team
 		this.blueTeam = new Team(100, '#5281d7');
-		this.redTeam = new Team(200, '#cf3a3e').
+		this.redTeam = new Team(200, '#cf3a3e');
 
-		for (const ply of game.players!) {
+		for (let ply of game.players!) {
 			if (ply.teamId == 100) {
 				this.blueTeam.addPlayer(ply);
 			} else {
@@ -399,7 +403,7 @@ export class Game {
 		];
 
 		let buildings: any[] = [];
-		for (const event of game.events) {
+		for (const event of game.events ?? []) {
 			switch (event.type) {
 				case 'CHAMPION_KILL':
 					event.killerTeamId = event.killerId > 5 ? 200 : 100;
