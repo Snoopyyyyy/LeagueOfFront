@@ -71,5 +71,4 @@ export class FixdataService {
 	getItem(itemId: number|string): any {
 		return this.itemsData[itemId];
 	}
-
 }
