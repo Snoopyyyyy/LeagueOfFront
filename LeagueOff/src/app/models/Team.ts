@@ -26,8 +26,6 @@ export class Team {
 		if (typeof (post) == "string") {
 			return this.players[post]!;
 		} else {
-			console.log(post);
-			console.log(this.players)
 			return Object.values<Player>(this.players).find(p => p.participantId === post)!
 		}
 	}

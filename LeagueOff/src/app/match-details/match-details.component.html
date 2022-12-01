@@ -79,8 +79,7 @@
 									'background-image': 'url('+getBuildingIcon('NEXUS')+')',
 									'filter': 'invert(21%) sepia(64%) saturate(2524%) hue-rotate(342deg) brightness(45%) contrast(90%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
 									'opacity': range <= game.duration * 1000 - 10 ? '100%' : (game.blueTeam.win ? '25%' : '100%')}">
-							</div>	
-							
+							</div>
 						</div>
 						<h3 class="artist-title">
 							<span class="time">{{Fixdata.getTime(this.range).join(':')}}</span>
@@ -152,8 +151,7 @@
 			</div>
 			
 			<div class="logs">
-				
-	
+				<app-match-logs [game]="game" [range]="range" [selected]="selectedEvent" (eventChange)="select($event)"></app-match-logs>
 			</div>
 			
 		</div>

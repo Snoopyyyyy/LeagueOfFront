@@ -1,0 +1,55 @@
+<section class="logs-container">
+   <div 
+      *ngFor="let event of events | filterRange: range"
+      (click)="setEvent(event)" 
+      class="{{isSame(event) ? 'log-selected' : ''}} log-parent"
+      [ngStyle]="{'background': (event.killerId > 5 ? game.redTeam.color : game.blueTeam.color), 'color': (event.killerId > 5 ? '#703c47' : '#2f436e')}">
+      <section *ngIf="event.type === 'CHAMPION_KILL'">
+         <h5 class="log-title">{{Fixdata.getTime(event.timestamp).join(':')}}</h5>
+         <img src="{{!event.killerId ? 'assets/img/minion.png' : Fixdata.getChampionIcon(game.getPlayer(event.killerId).championName!)}}"/>
+
+         <div class="assists">
+            <img *ngFor="let assit of event.assistingParticipantIds" src="{{Fixdata.getChampionIcon(game.getPlayer(assit).championName!)}}"/>
+         </div>
+
+         <img class="kill-indicator" src="assets/img/kill_score.png">
+         <img src="{{!event.victimId ? 'assets/img/minion.png' : Fixdata.getChampionIcon(game.getPlayer(event.victimId).championName!)}}"/>
+
+         <span class="description">
+            {{
+               !event.killerId ? game.getPlayer(event.victimId).championName! +' has been executed' : 
+               game.getPlayer(event.killerId).championName! + ' has killed '+ game.getPlayer(event.victimId).championName!
+            }}
+         </span>
+      </section>
+      <section *ngIf="event.type === 'BUILDING_KILL'">
+         <h5 class="log-title">{{Fixdata.getTime(event.timestamp).join(':')}}</h5>
+         <img src="{{!event.killerId ? 'assets/img/minion.png' : Fixdata.getChampionIcon(game.getPlayer(event.killerId).championName!)}}"/>
+         <img class="kill-indicator" src="assets/img/kill_score.png">
+         <img src="{{getBuildingIcon(event.buildingType)}}"/>
+         <span class="description">
+            {{
+               !event.killerId ? (event.teamId == 100 ? 'red team' : 'blue team' ) + ' has destroy ' + getBuildingName(event.buildingType) : 
+               game.getPlayer(event.killerId).championName! + ' has destroy ' + getBuildingName(event.buildingType)
+            }}
+         </span>
+
+      </section>
+      <section *ngIf="event.type === 'ELITE_MONSTER_KILL' && event.killerId !== 0">
+         <h5 class="log-title">{{Fixdata.getTime(event.timestamp).join(':')}}</h5>
+         <img src="{{!event.killerId ? 'assets/img/minion.png' : Fixdata.getChampionIcon(game.getPlayer(event.killerId).championName!)}}"/>
+         <img class="kill-indicator" src="assets/img/kill_score.png">
+         <img src="{{getObjectiveIcon(event.monsterSubType ?? event.monsterType)}}"/>
+
+         <span class="description">
+            {{
+               game.getPlayer(event.killerId).championName! + ' has killed the ' + getName(event.monsterSubType ?? event.monsterType)
+            }}
+         </span>
+      </section>
+      <section *ngIf="event.type === 'GAME_END'">
+         <h5 class="log-title">{{Fixdata.getTime(event.timestamp).join(':')}}</h5>
+         <h5 class="log-title" style="width: 50%;">Victoire de l'équipe {{event.winningTeam == 100 ? 'bleu' : 'rouge'}}</h5>
+      </section>
+   </div>
+</section>

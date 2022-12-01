@@ -1,0 +1,64 @@
+.logs-container {
+   max-height: 100%;
+   overflow-y: auto;
+
+   display: flex;
+   flex-direction: column;
+   gap: 15px;
+}
+
+.log-parent {
+   width: 100%;
+   min-height: 64px;
+   height: 64px;
+   border: 2px solid #101010;
+   border-radius: 10px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   cursor: pointer;
+   color: #bcc4cc !important;
+}
+
+.log-parent > section {
+   width: 100%;
+   height: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content: start;
+   align-items: center;
+}
+
+.log-title {
+   min-width: 15%;
+   width: 15%;
+   text-align: center;
+   font-weight: 700;
+   text-shadow: rgb(16, 16, 16) 2px 0px 0px, rgb(16, 16, 16) 1.75517px 0.958851px 0px, rgb(16, 16, 16) 1.0806px 1.68294px 0px, rgb(16, 16, 16) 0.141474px 1.99499px 0px, rgb(16, 16, 16) -0.832294px 1.81859px 0px, rgb(16, 16, 16) -1.60229px 1.19694px 0px, rgb(16, 16, 16) -1.97998px 0.28224px 0px, rgb(16, 16, 16) -1.87291px -0.701566px 0px, rgb(16, 16, 16) -1.30729px -1.5136px 0px, rgb(16, 16, 16) -0.421592px -1.95506px 0px, rgb(16, 16, 16) 0.567324px -1.91785px 0px, rgb(16, 16, 16) 1.41734px -1.41108px 0px, rgb(16, 16, 16) 1.92034px -0.558831px 0px;}
+
+.log-parent > section > img {
+   height: 100%;
+   padding: 5px;
+   aspect-ratio: 1 / 1;
+}
+
+.kill-indicator {
+   height: 60% !important;
+}
+
+.log-selected {
+   border-color: white !important;
+}
+
+.assists {
+   display: flex;
+   flex-direction: row;
+   height: 50%;
+}
+
+.description {
+   margin: 0;
+   width: 100%;
+   text-align: end;
+   padding: 0px 5px;
+}
