@@ -1,3 +1,116 @@
+body {
+	padding: 0;
+	margin: 0;
+	background: #e0e5ec;
+	font-family: "Roboto", sans-serif;
+}
+.container {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.iphone {
+	width: 80%;
+	background: #31313c;
+	border-radius: 2em;
+	box-sizing: border-box;
+	padding: 2em;
+	display: flex;
+	flex-direction: column;
+	z-index: 5;
+}
+.iphone .title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	font-size: 0.75em;
+	margin-bottom: 2em;
+	color : #FFFFFF;
+}
+.iphone .album-cover {
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+}
+.iphone .album-cover .album-overlay {
+	width: 248px;
+	height: 248px;
+	z-index: 2;
+	border-radius: 15px;
+	position: absolute;
+	opacity: 0.35;
+	-webkit-clip-path: ellipse(61% 64% at 82% 56%);
+	clip-path: ellipse(61% 64% at 82% 56%);
+}
+.iphone .album-cover img {
+	width: 100%;
+	border-radius: 15px;
+}
+.iphone .album-cover .song-title {
+	text-align: center;
+	padding-bottom: 0;
+	margin-bottom: 0;
+	color: #65717e;
+}
+.iphone .album-cover .artist-title {
+	text-align: center;
+	padding: 1em 0;
+	margin: 0;
+	font-size: 0.85em;
+	color: #65717e;
+}
+.iphone .track {
+	margin-top: 1em;
+	height: 10px;
+}
+.iphone .track div {
+	width: 42%;
+	height: 100%;
+	background: #7e8a98;
+	opacity: 0.75;
+	border-radius: 15px;
+}
+.iphone .buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	padding: 1em 0;
+}
+.iphone .lyrics {
+	color: #7e8a98;
+	margin-top: 2em;
+	text-align: center;
+	font-size: 0.75em;
+	display: flex;
+	flex-direction: column;
+}
+.neu {
+	box-shadow: -5px -5px 15px 0px #fff 9e, 5px 5px 15px 0px #a3b1c6 a8;
+	background: #31313c;
+	border-radius: 2em;
+	border: 0;
+}
+.btn {
+	padding: 15px;
+	border-radius: 30px;
+	color: #FFFFFF;
+	outline: none;
+	cursor: pointer;
+}
+.btn.lg {
+	font-size: 1em;
+}
+.btn:active {
+	cursor: pointer;
+	box-shadow: inset -5px -5px 15px 0px #fff 9e, inset 5px 5px 15px 0px #a3b1c6 a8;
+}
+.red {
+	color: #e22d49;
+}
+
+
 #map {
 	position: relative;
 	background-size: cover, cover;
@@ -6,13 +119,13 @@
 	width: 100%;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
-	background-color: #101010;
+	background-color: #31313c;
 	border: 2px;
 	border-color: #31313c;
 }
 
 html, body {
-	background-color: #101010;
+	background-color: red;
 }
   
 .setting {
@@ -21,13 +134,11 @@ html, body {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: #31313c;
 }
 
 .map-container {
 	width: 100%;
 	padding: 0;
-	border: 2px solid black;
 	background-color: #101010 !important;
 	border-radius: 10px;
 	display: flex;
@@ -91,7 +202,7 @@ html, body {
 
 .time {
 	margin-top: 5%;
-	color: white;
+	color: #fff;
 	font-weight: 500;
 }
 
@@ -180,15 +291,22 @@ html, body {
     height: 100%;
     position: absolute;
     top : 0;
+	z-index: 0;
     right : 0;
   }
   
-  .bg-icon:first-child {
+  .bg-icon:nth-child(2) {
     height: 100%;
     position: absolute;
     top : 0;
     left: 0;
-    transform: rotate(180deg);
+    /* transform: rotate(180deg); */
+  }
+  .bg-icon:nth-child(1) {
+    height: 100%;
+    position: absolute;
+    top : 0;
+    left: 0;
   }
 
   .left{
