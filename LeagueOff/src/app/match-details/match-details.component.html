@@ -1,104 +1,121 @@
 <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
 <div class="bg">
+		<img src="/assets/img/Champion_ashe_HP.png" alt="" class="bg-icon" id="">
+	<img class="bg-icon" src="/assets/img/bg-left2.png" alt="">
 	<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
-	<img class="bg-icon" src="/assets/img/bg-right.png" alt="">
+	
 </div>
 
 <section class="container">
 	<div *ngIf="game" class="container">
 		<div class="left">
 			<div class="map-container">
-				<div id="map">
-					<img src="{{game.getMap()}}" style="position: absolute; width: 100%; border-radius: 10px;"/>
-					<img src="{{game.getMap(true)}}" style="position: absolute; width: 100%; border-radius: 10px;"
-					[ngStyle]="{'opacity': getOpacity()}"/>
-					
-					<div
-						*ngFor="let event of game.getKills()"
-						class="ping death kteam-{{event.killerTeamId}} kill-{{event.killerId}} victim-{{event.victimId}}{{event.assistingParticipantIds ? ' assist-'+event.assistingParticipantIds.join(' assist-') : ''}} visible-{{event.timestamp <= range}}"
-						[ngClass]="isSelected(event) ? 'selected' : ''"
-						(click)="select(event)"
-						[ngStyle]="{
-							'bottom': (100*event.position.y)/15000+'%',
-							'left': (100*event.position.x)/15000+'%',
-							'background': event.killerId > 5 ? '#FF4444' : '#008FFF',
-							'display': event.timestamp > range || event.spawn > range ? 'none' : 'block',
-							'opacity': event.timestamp < range ? ( event.timestamp  + 60000 > range ? '100%' : '25%') : '0%'}">
-					</div>
-					
-					<div
-						*ngFor="let event of game.objectiveEvent"
-						class="ping obj"
-						[ngStyle]="{
-							'bottom': (100*event.position.y)/15000+'%',
-							'left': (100*event.position.x)/15000+'%',
-							'background-image': 'url('+getObjectiveIcon(event.monsterSubType ?? event.monsterType)+')',
-							'display': event.spawn > range ? 'none' : 'block',
-							'visibility': event.spawn < range && range < event.timestamp ? 'visible' : 'hidden'}">
-					</div>	
-					
-					<div
-						*ngFor="let event of game.buildings"
-						class="ping obj visible-{{event.timestamp <= range}} team-{{event.teamId}} type-{{event.buildingType}}"
-						[ngClass]="isSelected(event) ? 'selected' : ''"
-						(click)="select(event)"
-						[ngStyle]="{
-							'bottom': (100 * event.position.y)/15000+'%',
-							'left': (100 * event.position.x)/15000+'%',
-							'background-image': 'url('+getBuildingIcon(event.buildingType)+')',
-							'display': event.spawn > range ? 'none' : 'block',
-							'filter': event.teamId == 100 ? 'invert(39%) sepia(59%) saturate(514%) hue-rotate(148deg) brightness(62%) contrast(87%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)' : 'invert(21%) sepia(64%) saturate(2524%) hue-rotate(342deg) brightness(45%) contrast(90%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
-							'opacity': event.spawn <= range && range < event.timestamp ? '100%' : '25%'}">
-					</div>	
-					
-					<div
-						class="ping  obj nexus"
-						[ngStyle]="{
-							'bottom': ((game.gameMode === 'ARAM' ? 150 : 100) * 1500)/15000+'%',
-							'left': ((game.gameMode === 'ARAM' ? 150 : 100) * 1500)/15000+'%',
-							'background-image': 'url('+getBuildingIcon('NEXUS')+')',
-							'filter': 'invert(39%) sepia(59%) saturate(514%) hue-rotate(148deg) brightness(62%) contrast(87%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
-							'opacity': range <= game.duration * 1000 -10 ? '100%' : (game.redTeam.win ? '25%' : '100%')}">
-					</div>	
-					
-					<div
-						class="ping obj nexus"
-						[ngStyle]="{
-							'top': ((game.gameMode === 'ARAM' ? 150 : 100) * 1100)/15000+'%',
-							'right': ((game.gameMode === 'ARAM' ? 150 : 100) * 1100)/15000+'%',
-							'background-image': 'url('+getBuildingIcon('NEXUS')+')',
-							'filter': 'invert(21%) sepia(64%) saturate(2524%) hue-rotate(342deg) brightness(45%) contrast(90%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
-							'opacity': range <= game.duration * 1000 - 10 ? '100%' : (game.blueTeam.win ? '25%' : '100%')}">
-					</div>	
-					
-				</div>
-				
-				<div class="setting">
-					<div class="timeline w-100 d-flex justify-content-between align-items-center" style="padding-bottom: 10px;">
-						<button (click)="nextSpeed()" class="btn btn-outline-secondary px-3">x{{speed}}</button>
-						<div class="popup d-flex justify-content-between align-items-center"
-							*ngIf="selectedEvent != null && (selectedEvent.type === 'CHAMPION_KILL'  || selectedEvent.type  === 'BUILDING_KILL')"
-							[ngStyle]="{'background': (selectedEvent.killerId > 5 ? game.redTeam.color : game.blueTeam.color)}">
-							<img 
-								src="{{!selectedEvent.killerId ? 'assets/img/minion.png' : Fixdata.getChampionIcon(game.getPlayer(selectedEvent.killerId).championName!)}}"
-								[ngStyle]="{'border-color': (selectedEvent.killerId > 5 ? '#703c47' : '#2f436e')}"/>
-							<p>X</p>
-							<img 
-								src="{{!selectedEvent.victimId ? getBuildingIcon(selectedEvent.buildingType) : Fixdata.getChampionIcon(game.getPlayer(selectedEvent.victimId).championName!)}}"
-								[ngStyle]="{'border-color': (selectedEvent.victimId > 5 ? '#703c47' : '#2f436e')}"/>
-							<p>{{Fixdata.getTime(selectedEvent.timestamp).join(':')}}</p>
+					<div class="iphone neu">
+					  <div class="title">
+						<div><i class="fa"></i></div>
+						<div>Partie</div>
+						<div><i class="fa"></i></div>
+					  </div>
+					  <div class="album-cover">
+						<div class="album-overlay"></div>
+						<div id="map">
+							<img src="{{game.getMap()}}" style="position: absolute; width: 100%; border-radius: 10px;"/>
+							<img src="{{game.getMap(true)}}" style="position: absolute; width: 100%; border-radius: 10px;"
+							[ngStyle]="{'opacity': getOpacity()}"/>
+							
+							<div
+								*ngFor="let event of game.getKills()"
+								class="ping death kteam-{{event.killerTeamId}} kill-{{event.killerId}} victim-{{event.victimId}}{{event.assistingParticipantIds ? ' assist-'+event.assistingParticipantIds.join(' assist-') : ''}} visible-{{event.timestamp <= range}}"
+								[ngClass]="isSelected(event) ? 'selected' : ''"
+								(click)="select(event)"
+								[ngStyle]="{
+									'bottom': (100*event.position.y)/15000+'%',
+									'left': (100*event.position.x)/15000+'%',
+									'background': event.killerId > 5 ? '#FF4444' : '#008FFF',
+									'display': event.timestamp > range || event.spawn > range ? 'none' : 'block',
+									'opacity': event.timestamp < range ? ( event.timestamp  + 60000 > range ? '100%' : '25%') : '0%'}">
+							</div>
+							
+							<div
+								*ngFor="let event of game.objectiveEvent"
+								class="ping obj"
+								[ngStyle]="{
+									'bottom': (100*event.position.y)/15000+'%',
+									'left': (100*event.position.x)/15000+'%',
+									'background-image': 'url('+getObjectiveIcon(event.monsterSubType ?? event.monsterType)+')',
+									'visibility': event.spawn < range && range < event.timestamp ? 'visible' : 'hidden'}">
+							</div>	
+							
+							<div
+								*ngFor="let event of game.buildings"
+								class="ping obj visible-{{event.timestamp <= range}} team-{{event.teamId}} type-{{event.buildingType}}"
+								[ngClass]="isSelected(event) ? 'selected' : ''"
+								(click)="select(event)"
+								[ngStyle]="{
+									'bottom': (100 * event.position.y)/15000+'%',
+									'left': (100 * event.position.x)/15000+'%',
+									'background-image': 'url('+getBuildingIcon(event.buildingType)+')',
+									'display': event.spawn > range ? 'none' : 'block',
+									'filter': event.teamId == 100 ? 'invert(39%) sepia(59%) saturate(514%) hue-rotate(148deg) brightness(62%) contrast(87%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)' : 'invert(21%) sepia(64%) saturate(2524%) hue-rotate(342deg) brightness(45%) contrast(90%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
+									'opacity': event.spawn <= range && range < event.timestamp ? '100%' : '25%'}">
+							</div>	
+							
+							<div
+								class="ping  obj nexus"
+								[ngStyle]="{
+									'bottom': ((game.gameMode === 'ARAM' ? 150 : 100) * 1500)/15000+'%',
+									'left': ((game.gameMode === 'ARAM' ? 150 : 100) * 1500)/15000+'%',
+									'background-image': 'url('+getBuildingIcon('NEXUS')+')',
+									'filter': 'invert(39%) sepia(59%) saturate(514%) hue-rotate(148deg) brightness(62%) contrast(87%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
+									'opacity': range <= game.duration * 1000 -10 ? '100%' : (game.redTeam.win ? '25%' : '100%')}">
+							</div>	
+							
+							<div
+								class="ping obj nexus"
+								[ngStyle]="{
+									'top': ((game.gameMode === 'ARAM' ? 150 : 100) * 1100)/15000+'%',
+									'right': ((game.gameMode === 'ARAM' ? 150 : 100) * 1100)/15000+'%',
+									'background-image': 'url('+getBuildingIcon('NEXUS')+')',
+									'filter': 'invert(21%) sepia(64%) saturate(2524%) hue-rotate(342deg) brightness(45%) contrast(90%) drop-shadow(-1px -1px 0px #000000) drop-shadow(1px 1px 0px #000000)',
+									'opacity': range <= game.duration * 1000 - 10 ? '100%' : (game.blueTeam.win ? '25%' : '100%')}">
+							</div>
 						</div>
-						<span class="time">{{Fixdata.getTime(this.range).join(':')}}</span>
+						<h3 class="artist-title">
+							<span class="time">{{Fixdata.getTime(this.range).join(':')}}</span>
+						</h3>
+					  </div>
+					  <div class="buttons">
+							<button class="btn lg neu" (click)="setRange(-(10000/speed))"><i class="fa fa-backward"></i></button>
+							<button class="btn lg neu" (click)="togglePlayPause()"
+							[ngStyle]="{'background' : playing ? 'green' : ''}">{{playing ? "pause" : "play"}}</button>
+							<button class="btn lg neu" (click)="setRange(10000/speed)"><i class="fa fa-forward"></i></button>
+							
+						</div>
+					  <div class="">
+						<div class="setting">
+								<div class="popup d-flex justify-content-between align-items-center"
+									*ngIf="selectedEvent != null && (selectedEvent.type === 'CHAMPION_KILL'  || selectedEvent.type  === 'BUILDING_KILL')"
+									[ngStyle]="{'background': (selectedEvent.killerId > 5 ? game.redTeam.color : game.blueTeam.color)}">
+									<img 
+										src="{{!selectedEvent.killerId ? 'assets/img/minion.png' : Fixdata.getChampionIcon(game.getPlayer(selectedEvent.killerId).championName!)}}"
+										[ngStyle]="{'border-color': (selectedEvent.killerId > 5 ? '#703c47' : '#2f436e')}"/>
+									<p>X</p>
+									<img 
+										src="{{!selectedEvent.victimId ? getBuildingIcon(selectedEvent.buildingType) : Fixdata.getChampionIcon(game.getPlayer(selectedEvent.victimId).championName!)}}"
+										[ngStyle]="{'border-color': (selectedEvent.victimId > 5 ? '#703c47' : '#2f436e')}"/>
+									<p>{{Fixdata.getTime(selectedEvent.timestamp).join(':')}}</p>
+								</div>
+							<input type="range" [max]="game ? game.duration*1000 : 0" [(ngModel)]="range" class="w-100" />
+						</div>
+						<div></div>
+					  </div>
+					  <div class="lyrics">
+						<button (click)="nextSpeed()" class="btn btn-outline-secondary px-3">x{{speed}}</button>
+					  </div>
 					</div>
-					<input type="range" [max]="game ? game.duration*1000 : 0" [(ngModel)]="range" class="w-100" />
-					<div class="button">
-						<button class="btn btn-primary w-25" (click)="setRange(-(10000/speed))"><i class="fa fa-arrow-left"></i></button>
-						<button class="btn btn-primary w-25" (click)="togglePlayPause()"
-						[ngStyle]="{'background' : playing ? 'green' : ''}">{{playing ? "pause" : "play"}}</button>
-						<button class="btn btn-primary w-25" (click)="setRange(10000/speed)"><i class="fa fa-arrow-right"></i></button>
-					</div>
-				</div>
+				
+				
 			</div>
 		</div>
 		<div class="right">
