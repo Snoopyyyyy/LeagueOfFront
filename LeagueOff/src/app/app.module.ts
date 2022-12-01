@@ -7,13 +7,17 @@ import {MatchsListeComponent} from './matchs-liste/matchs-liste.component';
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
 import { MatchDetailsComponent } from './match-details/match-details.component';
+import { SortByDatePipe } from './pipes/sort-by-date.pipe';
+import { SortByMostPlayedPipe } from './pipes/sort-by-most-played.pipe';
 
 @NgModule({
 	declarations: [
 		AppComponent,
 		HomePageComponent,
 		MatchsListeComponent,
-  		MatchDetailsComponent,
+  	MatchDetailsComponent,
+    SortByDatePipe,
+    SortByMostPlayedPipe,
 	],
 	imports: [
 		BrowserModule,

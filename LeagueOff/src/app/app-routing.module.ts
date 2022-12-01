@@ -6,7 +6,7 @@ import {MatchDetailsComponent} from "./match-details/match-details.component";
 
 const routes: Routes = [
 	{path: '', component: HomePageComponent},
-	{path: 'game/:name/:puuid', component: MatchsListeComponent},
+  {path: 'game/:name/history', component: MatchsListeComponent},
 	{path: 'game/:game_id', component: MatchDetailsComponent},
 ];
 

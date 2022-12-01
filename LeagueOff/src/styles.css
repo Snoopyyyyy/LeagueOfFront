@@ -8,6 +8,7 @@
 
 html, body, app-root, app-match-details {
 	height: 100%;
+	background-color: #101010;
 }
 
 html, body, app-root, drop-down-server, search-input, app-match-details {
@@ -25,10 +26,6 @@ app-match-details {
 .fullscreen {
 	width: 100%;
 	height: 100%;
-}
-
-hr{
-	border-top: 2px solid  #F89B29;
 }
 
 .text-error {

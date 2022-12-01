@@ -8,6 +8,7 @@ export class Team {
 	color: string;
 	win: boolean;
 
+
 	constructor(id: number, color: string) {
 		this.id = id;
 		this.color = color;

@@ -1,13 +1,9 @@
-import { Player } from './Player';
-import { Team } from './Team';
-
 export enum POST {
 	'TOP' = 'TOP',
 	'JUNGLE' = 'JUNGLE',
 	'MIDDLE' = 'MIDDLE',
 	'BOTTOM' = 'BOTTOM',
 	'UTILITY' = 'UTILITY',
-}
 
 export class Game {
 	// raw
@@ -20,6 +16,8 @@ export class Game {
 	date!: Date;
 	duration!: number;
 	gameMode!: string;
+	gameType!: string;
+  
 	players!: Player[];
 	events: any[];
 
@@ -35,6 +33,7 @@ export class Game {
 
 	constructor(game: Game) {
 		// API
+		this.currentPlayer = game.currentPlayer;
 		this.matchId = game.matchId;
 		this.surrender = game.surrender;
 		this.date = game.date;
@@ -53,7 +52,7 @@ export class Game {
 
 		// set up team
 		this.blueTeam = new Team(100, '#5281d7');
-		this.redTeam = new Team(200, '#cf3a3e');
+		this.redTeam = new Team(200, '#cf3a3e').
 
 		for (const ply of game.players!) {
 			if (ply.teamId == 100) {
@@ -489,7 +488,7 @@ export class Game {
 				killerTeamId: 0,
 			});
 		}
-
+    
 		// nashors
 		nashors = nashors.map((nashor, id) => {
 			let before = id != 0 ? nashor[id - 1] : null;

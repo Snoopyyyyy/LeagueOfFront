@@ -1,20 +1,94 @@
-<div class="fullscreen bg-t d-flex flex-column justify-content-center align-items-center">
-	<form (ngSubmit)="submit()">
-		<div id="logo_home">
-			<img src="assets/img/logo.png" alt="logo" class="logo_home">
+<section>
+	<div class="left">
+		<div class="bg">
+			<img src="/assets/img/Champion_ashe_HP.png" alt="" class="" id="">
 		</div>
-
-		<select class="form-select w-90 m-auto mb-4" [(ngModel)]="region" name="region">
-			<option disabled selected value="">Serveur</option>
-			<option value="EUW1">EUW1</option>
-		</select>
-
-		<div class="input-group mobile_search mb-3">
-			<input type="text" class="form-control" placeholder="Summoner" [(ngModel)]="summonerName" name="summonerName"/>
-			<div class="input-group-append">
-				<button class="btn btn-ok" type="submit">GO</button>
+		<div class="play-btn">
+			<div class="round play-btn-grand">
+				<div class="round play-btn-moyen">
+					<div class="round play-btn-petit">
+						<a href="#"><img src="/assets/svg/play.png" width="45%" alt=""></a>
+					</div>
+				</div>
 			</div>
 		</div>
-	</form>
-	<span class="text-error">{{error}}</span>
-</div>
+	</div>
+
+	<div class="right">
+		<div class="bg-right">
+			<img src="/assets/img/bg-right.png" alt="">
+		</div>
+		<div class="particle">
+			<img src="/assets/img/particle.png" alt="">
+		</div>
+		<div class="container">
+			<div class="box-up">
+				<h1>League Off</h1>
+				<div class="btn-box">
+					<div class="details">
+
+						<form (ngSubmit)="submit()">
+							<select class="form-select form-select-lg mb-3 option"
+									[ngStyle]="{'color': !region ? '#6c757d' : '#495057'}"
+									aria-label=".form-select-lg example" name="region" [(ngModel)]="region">
+								<option disabled selected value="">Sélectionner le server</option>
+								<option value="EUW1">EUW1</option>
+								<option value="EUN1">EUN1</option>
+								<option value="JP1">JP1</option>
+								<option value="KR">KR</option>
+								<option value="LA1">LA1</option>
+								<option value="LA2">LA2</option>
+								<option value="NA1">NA1</option>
+								<option value="OC1">OC1</option>
+								<option value="TR1">TR1</option>
+								<option value="RU">RU</option>
+							</select>
+
+							<div class="input-group mobile_search mb-3">
+								<input type="text" class="form-control" placeholder="Summoner"
+									   [(ngModel)]="summonerName" name="summonerName">
+								<div class="input-group-append">
+									<button class="btn btn-gradient" type="submit">Go</button>
+								</div>
+							</div>
+						</form>
+						<span class="text-error">{{error}}</span>
+
+					</div>
+					<div class="buy">
+					</div>
+				</div>
+				<div class="trait"></div>
+				<div class="">
+
+					<div class="icon">
+						<img src="/assets/svg/keyboard.png" alt="">
+						<div class="paragraphe">
+							<h2>Joue</h2>
+							<p>T'es meilleures parties</p>
+						</div>
+					</div>
+
+					<div class="icon">
+						<img src="/assets/svg/zoom.png" alt="">
+						<div class="paragraphe">
+							<h2>Cherche</h2>
+							<p>Ton pseudo sur le site</p>
+						</div>
+					</div>
+
+					<div class="icon">
+						<img src="/assets/svg/graph.png" alt="">
+						<div class="paragraphe">
+							<h2>Analyse</h2>
+							<p>Ton gameplay pour t'améliorer</p>
+						</div>
+					</div>
+
+				</div>
+			</div>
+			<div class="box-down">
+			</div>
+		</div>
+	</div>
+</section>
