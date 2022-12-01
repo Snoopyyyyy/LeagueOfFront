@@ -125,11 +125,13 @@ export class MatchDetailsComponent implements OnInit {
 
 	setRange(number: number) {
 		if (this.game) {
+			console.log(this.range);
 			if (number > 0) {
 				this.range = this.range < (this.game.duration * 1000 - 100 * this.speed) ? this.range + 100 * this.speed : this.game.duration * 1000
 			} else {
 				this.range = this.range > 100 * this.speed ? this.range - 100 * this.speed : 0
 			}
+			console.log(this.range);
 		}
 	}
 

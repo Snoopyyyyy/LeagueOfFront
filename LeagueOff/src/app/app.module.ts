@@ -10,6 +10,7 @@ import { MatchDetailsComponent } from './match-details/match-details.component';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByMostPlayedPipe } from './pipes/sort-by-most-played.pipe';
 import { MatchLogsComponent } from './match-logs/match-logs.component';
+import { FilterRangePipe } from './pipes/filter-range.pipe';
 
 @NgModule({
 	declarations: [
@@ -20,6 +21,7 @@ import { MatchLogsComponent } from './match-logs/match-logs.component';
     SortByDatePipe,
     SortByMostPlayedPipe,
     MatchLogsComponent,
+    FilterRangePipe,
 	],
 	imports: [
 		BrowserModule,

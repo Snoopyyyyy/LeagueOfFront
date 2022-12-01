@@ -1,5 +1,16 @@
 <section class="logs-container">
-   <div *ngFor="let event of events">
-      coucou
+   <div *ngFor="let event of events | filterRange: range" (click)="setEvent(event)" class="{{isSame(event) ? 'log-selected' : ''}}">
+      <section *ngIf="event.type === 'CHAMPION_KILL'">
+         coucou {{event.type}} {{event.killerId}}
+      </section>
+      <section *ngIf="event.type === 'BUILDING_KILL'">
+         coucou {{event.type}} {{event.killerId}}
+      </section>
+      <section *ngIf="event.type === 'ELITE_MONSTER_KILL'">
+         coucou {{event.type}} {{event.killerId}}
+      </section>
+      <section *ngIf="event.type === 'GAME_END'">
+         coucou {{event.type}} {{event.winningTeam}}
+      </section>
    </div>
 </section>

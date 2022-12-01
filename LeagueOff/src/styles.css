@@ -76,3 +76,7 @@ app-match-details {
  ::-webkit-scrollbar-corner {
 	background: transparent;
  }
+
+ * {
+	z-index: 5;
+ }

@@ -34,6 +34,7 @@
 							'bottom': (100*event.position.y)/15000+'%',
 							'left': (100*event.position.x)/15000+'%',
 							'background-image': 'url('+getObjectiveIcon(event.monsterSubType ?? event.monsterType)+')',
+							'display': event.spawn > range ? 'none' : 'block',
 							'visibility': event.spawn < range && range < event.timestamp ? 'visible' : 'hidden'}">
 					</div>	
 					
@@ -133,7 +134,7 @@
 			</div>
 			
 			<div class="logs">
-				<app-match-logs [game]="game" [range]="range"></app-match-logs>
+				<app-match-logs [game]="game" [range]="range" [selected]="selectedEvent" (eventChange)="select($event)"></app-match-logs>
 			</div>
 			
 		</div>
