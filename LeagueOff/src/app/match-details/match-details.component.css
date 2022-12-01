@@ -82,12 +82,11 @@ html, body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	padding: 2px;
-	background: #0b5ed7;
+	padding: 5px 10px;
 	border: 2px solid;
 	border-radius: 10px;
-	border-color: #073c8a;
 	margin-top: 5%;
+	font-weight: 900;
 }
 
 .time {
@@ -105,7 +104,7 @@ html, body {
 
 .popup > img {
 	border-radius: 50%;
-	border: 2px solid #073c8a;
+	border: 2px solid;
 	height: 30px;
 	margin-inline: 5px;
 	aspect-ratio: 1 / 1;
