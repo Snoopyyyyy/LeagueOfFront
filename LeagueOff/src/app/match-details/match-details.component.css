@@ -4,6 +4,10 @@ body {
 	background: #e0e5ec;
 	font-family: "Roboto", sans-serif;
 }
+.fa {
+	font-size: x-large;
+}
+
 .container {
 	width: 100vw;
 	height: 100vh;
@@ -24,7 +28,7 @@ body {
 .iphone .title {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-between;
+	justify-content: center;
 	font-size: 0.75em;
 	margin-bottom: 2em;
 	color : #FFFFFF;
@@ -102,6 +106,11 @@ body {
 .btn.lg {
 	font-size: 1em;
 }
+
+.btn.lg:hover {
+	color: #006da7;
+}
+
 .btn:active {
 	cursor: pointer;
 	box-shadow: inset -5px -5px 15px 0px #fff 9e, inset 5px 5px 15px 0px #a3b1c6 a8;
@@ -139,7 +148,7 @@ html, body {
 .map-container {
 	width: 100%;
 	padding: 0;
-	background-color: #101010 !important;
+	background-color: #10101000 !important;
 	border-radius: 10px;
 	display: flex;
 	flex-direction: column;
@@ -204,13 +213,16 @@ html, body {
 	margin-top: 5%;
 	color: #fff;
 	font-weight: 500;
+	font-size: large;
 }
 
 .btn-outline-secondary {
 	margin-top: 5%;
-	background-color: white;
-	color: #0b5ed7;
+	color: white;
+	background-color: #006da7;
 	font-weight: 700;
+	border-width: 0px;
+	height: 44px;
 }
 
 .popup > img {
@@ -544,23 +556,84 @@ input[type="range"]:focus::-ms-fill-upper {
 	background: #006da7;
 }
 
-@media screen and (max-width: 1280px) {
+@media screen and (max-width: 830px) {
 	.container {
+		display: none !important;
+	}
+
+	.mobile-container {
+		display: flex !important;
 		flex-direction: column;
-		align-items: center;
 		justify-content: center;
+		align-items: center;
+		width: 80%;
+		height: 100%;
 		gap: 10px;
-	}
-
-	.right {
-		width: 90%;
-	}
-
-	.left {
-		width: 90%;
 	}
 
 	.bg-icon {
 		display: none;
 	}
+
+	.lyrics {
+		display: none !important;
+	}
+
+	.buttons {
+		padding: 0 !important;
+	}
+
+	.artist-title {
+		text-align: center;
+	}
+
+	.title {
+		margin: 0 !important;
+	}
+
+	.iphone {
+		padding: 10px;
+		width: 60%;
+	}
+
+	.logs {
+		min-height: 20% !important;
+		max-height: 20%;
+		min-width: 60%;
+	}
+}
+
+@media screen and (max-width: 400px) {
+	.logs {
+		min-width: 100%;
+		max-width: 100%;
+	}
+
+	.iphone {
+		padding: 10px;
+		width: 100%;
+	}
+}
+
+
+@media screen and (max-width: 991px) {
+
+	.right {
+		width: 50%;
+		height: 100%;
+	}
+
+	.gameinfo {
+		min-height: auto;
+	}
+
+	.logs {
+		min-height: 40%;
+	}
+
+}
+
+
+.mobile-container {
+	display: none;
 }
