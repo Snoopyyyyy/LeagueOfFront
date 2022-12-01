@@ -9,6 +9,7 @@ import {HttpClientModule} from "@angular/common/http";
 import { MatchDetailsComponent } from './match-details/match-details.component';
 import { SortByDatePipe } from './pipes/sort-by-date.pipe';
 import { SortByMostPlayedPipe } from './pipes/sort-by-most-played.pipe';
+import { MatchLogsComponent } from './match-logs/match-logs.component';
 
 @NgModule({
 	declarations: [
@@ -18,6 +19,7 @@ import { SortByMostPlayedPipe } from './pipes/sort-by-most-played.pipe';
   	MatchDetailsComponent,
     SortByDatePipe,
     SortByMostPlayedPipe,
+    MatchLogsComponent,
 	],
 	imports: [
 		BrowserModule,
