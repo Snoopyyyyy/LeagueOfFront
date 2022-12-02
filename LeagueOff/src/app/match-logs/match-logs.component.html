@@ -17,8 +17,8 @@
 
          <span class="description">
             {{
-               !event.killerId ? game.getPlayer(event.victimId).championName! +' has been executed' : 
-               game.getPlayer(event.killerId).championName! + ' has killed '+ game.getPlayer(event.victimId).championName!
+               !event.killerId ? game.getPlayer(event.victimId).championName! +' a été exécuté' : 
+               game.getPlayer(event.killerId).championName! + ' a tué '+ game.getPlayer(event.victimId).championName!
             }}
          </span>
       </section>
@@ -29,8 +29,8 @@
          <img src="{{getBuildingIcon(event.buildingType)}}"/>
          <span class="description">
             {{
-               !event.killerId ? (event.teamId == 100 ? 'red team' : 'blue team' ) + ' has destroy ' + getBuildingName(event.buildingType) : 
-               game.getPlayer(event.killerId).championName! + ' has destroy ' + getBuildingName(event.buildingType)
+               !event.killerId ? (event.teamId == 100 ? 'red team' : 'blue team' ) + ' a détruis ' + getBuildingName(event.buildingType) : 
+               game.getPlayer(event.killerId).championName! + ' a détruis ' + getBuildingName(event.buildingType)
             }}
          </span>
 
@@ -43,7 +43,7 @@
 
          <span class="description">
             {{
-               game.getPlayer(event.killerId).championName! + ' has killed the ' + getName(event.monsterSubType ?? event.monsterType)
+               game.getPlayer(event.killerId).championName! + ' a tué le ' + getName(event.monsterSubType ?? event.monsterType)
             }}
          </span>
       </section>

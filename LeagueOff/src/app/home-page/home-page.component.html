@@ -7,7 +7,7 @@
 			<div class="round play-btn-grand">
 				<div class="round play-btn-moyen">
 					<div class="round play-btn-petit">
-						<a href="#"><img src="/assets/svg/play.png" width="45%" alt=""></a>
+						<a href="#" (click)="playAudio()"><img src="/assets/svg/play.png" width="45%" alt=""></a>
 					</div>
 				</div>
 			</div>
@@ -17,9 +17,6 @@
 	<div class="right">
 		<div class="bg-right">
 			<img src="/assets/img/bg-right.png" alt="">
-		</div>
-		<div class="particle">
-			<img src="/assets/img/particle.png" alt="">
 		</div>
 		<div class="container">
 			<div class="box-up">
@@ -48,7 +45,7 @@
 								<input type="text" class="form-control" placeholder="Summoner"
 									   [(ngModel)]="summonerName" name="summonerName">
 								<div class="input-group-append">
-									<button class="btn btn-gradient" type="submit">Go</button>
+									<button class="btn btn-go" type="submit">Go</button>
 								</div>
 							</div>
 						</form>

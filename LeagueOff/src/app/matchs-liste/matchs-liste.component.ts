@@ -57,12 +57,12 @@ export class MatchsListeComponent implements OnInit {
 						this.reloadStat();
 					}, 
 					error: () => {
-						this.error = 'No historique found';
+						this.error = 'Auncun historique pour cette invocateur';
 					}
 				});
 			},
 			error: () => {
-				this.error = 'No summoner found';
+				this.error = 'Auncun invocateur trouvé';
 			}
 		});
 	}
@@ -75,18 +75,18 @@ export class MatchsListeComponent implements OnInit {
 					if (summoner.puuid != '') {
 						this.router.navigate([`/game/${summoner.name}/history`]);
 					} else {
-						this.error = 'No summoner found';
+						this.error = 'Auncun invocateur trouvé';
 					}
 				},
 				error: (error) => {
-					this.error = 'No summoner found';
+					this.error = 'Auncun invocateur trouvé';
 				},
 			});
 		} else {
-			this.error = this.region === '' || !this.region ? 'Select a region' : '';
+			this.error = this.region === '' || !this.region ? 'séléctionner une region' : '';
 			this.error +=
 				this.summonerName === '' || !this.summonerName
-					? (this.error.length ? ' and e' : 'E') + 'nter a summoner'
+					? (this.error.length ? ' et e' : 'E') + 'ntrer le nom d\'in invocateur'
 					: '';
 			
 			setTimeout(() => {

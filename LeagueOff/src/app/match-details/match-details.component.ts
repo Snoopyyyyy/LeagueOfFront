@@ -4,7 +4,6 @@ import {GameService} from "../services/game.service";
 import {SummonerService} from "../services/summoner.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {Game, POST} from "../models/Game";
-import {Player} from "../models/Player";
 import {GameItem} from "../models/GameItem";
 
 @Component({
@@ -148,7 +147,7 @@ export class MatchDetailsComponent implements OnInit {
 
 	getTeamKill(teamId: number) {
 		let rawKills = document.querySelectorAll(".kteam-"+teamId+".visible-true");
-		let kill =  rawKills.length;
+		let kill =  rawKills.length / 2;
 		return kill + "";
 	}
 
@@ -157,9 +156,9 @@ export class MatchDetailsComponent implements OnInit {
 		let rawDeaths = document.querySelectorAll(".victim-"+participantId+".visible-true");
 		let rawAssist = document.querySelectorAll(".assist-"+participantId+".visible-true");
 
-		let kills = rawKills.length;
-		let deaths = rawDeaths.length;
-		let assists = rawAssist.length;
+		let kills = rawKills.length / 2;
+		let deaths = rawDeaths.length / 2;
+		let assists = rawAssist.length / 2;
 
 		return `${kills}/${deaths}/${assists}`;
 	}

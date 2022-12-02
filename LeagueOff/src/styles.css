@@ -80,3 +80,17 @@ app-match-details {
  * {
 	z-index: 5;
  }
+ 
+.btn-go {
+    background: #00a0f3;
+    border-width: 5px;
+    border-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+}
+
+.btn-go:hover {
+    color: #00a0f3 !important;
+    background-color: white !important;
+}

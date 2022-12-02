@@ -44,4 +44,11 @@ export class HomePageComponent implements OnInit {
 		}
 	}
 
+	playAudio(){
+		console.log('ya')
+        let audio = new Audio();
+        audio.src = "/assets/mp4/Ashe.mp3";
+        audio.load();
+        audio.play();
+    }
 }

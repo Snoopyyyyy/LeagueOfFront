@@ -57,11 +57,22 @@ export class MatchLogsComponent implements OnInit {
   }
   
   getName(objectif: string): string {
+    let _ = {
+      "BARON_NASHOR": "le baron",
+			"RIFTHERALD": "le heraut de faille",
+			"AIR_DRAGON": "le dragon des nuages",
+			"FIRE_DRAGON": "le dragon infernal",
+			"EARTH_DRAGON": "le dragon des montagnes",
+			"WATER_DRAGON": "le dragon des océans",
+			"HEXTECH_DRAGON": "le dragon hextech",
+			"CHEMTECH_DRAGON": "le dragon techno-chimique",
+			"ELDER_DRAGON": "le dragon ancestral"
+    }
 		return objectif.split('_').join(' ').toLowerCase();
   }
 
   getBuildingName(type: string): string {
-    let _: any = { "TOWER_BUILDING": "a tower", "INHIBITOR_BUILDING": "an inhibitor"};
+    let _: any = { "TOWER_BUILDING": "une tourelle", "INHIBITOR_BUILDING": "un inhibiteur"};
     return _[type];
   }
 }

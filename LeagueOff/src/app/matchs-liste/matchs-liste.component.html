@@ -22,7 +22,7 @@
 
 			<div class="stat-data">
 				<div class="winrate">
-					<h5 class="stat-title">Winrate</h5>
+					<h5 class="stat-title">Pourcentage de victoire</h5>
 					<div class="winrate-bar">
 						<div *ngIf="getPourCent(this.statistique?.win?.length)" class="wr-win" [ngStyle]="{'width': getPourCent(this.statistique?.win?.length)+'%'}">{{getPourCent(this.statistique?.win?.length)}}% ({{statistique?.win?.length}})</div>
 						<div *ngIf="getPourCent(this.statistique?.loose?.length)" class="wr-loose" [ngStyle]="{'width': getPourCent(this.statistique?.loose?.length)+'%'}">({{statistique?.loose?.length}}) {{getPourCent(this.statistique?.loose?.length)}}%</div>
@@ -30,7 +30,7 @@
 				</div>
 
 				<div class="champs-stat">
-					<h5 class="stat-title">Moyen Champions</h5>
+					<h5 class="stat-title">Statistique des champions</h5>
 					<div class="champ-list">
 						<div *ngFor="let champ of this.statistique?.champs | keyvalue: onCompare | sortByMostPlayed" class="champ-state">
 							<div class="stat-icon">
@@ -85,7 +85,7 @@
 						<input type="text" class="form-control searchsummonerinput" placeholder="Summoner"
 							[(ngModel)]="summonerName" name="summonerName">
 						<div class="input-group-append">
-							<button class="btn btn-gradient" type="submit">Go</button>
+							<button class="btn btn-go" type="submit">Go</button>
 						</div>
 					</div>
 				</div>
