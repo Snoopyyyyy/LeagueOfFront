@@ -6,12 +6,17 @@
 	background: linear-gradient(to bottom, rgb(255, 15, 123), rgb(248, 155, 41));
 }
 
-html, body {
+html, body, app-root, app-match-details {
 	height: 100%;
+	background-color: #101010;
 }
 
-html, body, drop-down-server, search-input {
+html, body, app-root, drop-down-server, search-input, app-match-details {
 	width: 100%;
+}
+
+app-match-details {
+	background-color: #101010;
 }
 
 .w-90 {
@@ -27,4 +32,65 @@ html, body, drop-down-server, search-input {
 	color: red;
 	font-weight: bolder;
 	text-transform: uppercase;
+}
+
+app-match-details {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+
+
+::-webkit-scrollbar {
+	width: 10px;
+	height: 10px;
+ }
+ ::-webkit-scrollbar-button {
+	width: 0px;
+	height: 0px;
+ }
+ ::-webkit-scrollbar-thumb {
+	background: #646464;
+	border: 0px none #ffffff;
+	border-radius: 50px;
+ }
+ ::-webkit-scrollbar-thumb:hover {
+	background: #737373;
+ }
+ ::-webkit-scrollbar-thumb:active {
+	background: #646464;
+ }
+ ::-webkit-scrollbar-track {
+	background: #ff000000;
+	border: 0px none #ffffff;
+	border-radius: 100px;
+ }
+ ::-webkit-scrollbar-track:hover {
+	background: #ff000000;
+ }
+ ::-webkit-scrollbar-track:active {
+	background: #d6000000;
+ }
+ ::-webkit-scrollbar-corner {
+	background: transparent;
+ }
+
+ * {
+	z-index: 5;
+ }
+ 
+.btn-go {
+    background: #00a0f3;
+    border-width: 5px;
+    border-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    color: white;
+}
+
+.btn-go:hover {
+    color: #00a0f3 !important;
+    background-color: white !important;
 }

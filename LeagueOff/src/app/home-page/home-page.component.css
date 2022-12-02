@@ -9,17 +9,11 @@
 }
 
 *{
-    padding: 0;
     margin : 0;
     list-style: none;
     font-family: InterBold;
     text-decoration: none;
     box-sizing: border-box;
-}
-
-body {
-    background-color: #101010;
-    overflow: hidden;
 }
 
 section{

@@ -27,10 +27,15 @@ export class HomePageComponent implements OnInit {
 		console.log(this.region, this.summonerName)
 		this.error = "";
 		if(this.region != "" && this.summonerName != "") {
-			this._summonerService.getSummoner(this.summonerName).subscribe((summoner) => {
-				if(summoner.puuid != "") {
-					this.router.navigate([`/game/${summoner.name}/${summoner.puuid}`]);
-				}else {
+			this._summonerService.getSummoner(this.summonerName).subscribe({
+				next: (summoner) => {
+					if (summoner.puuid != "") {
+						this.router.navigateByUrl(`/game/${summoner.name}/history`);
+					} else {
+						this.error = "No summoner found"
+					}
+				},
+				error: () => {
 					this.error = "No summoner found"
 				}
 			})
@@ -39,4 +44,11 @@ export class HomePageComponent implements OnInit {
 		}
 	}
 
+	playAudio(){
+		console.log('ya')
+        let audio = new Audio();
+        audio.src = "/assets/mp4/Ashe.mp3";
+        audio.load();
+        audio.play();
+    }
 }
